@@ -42,7 +42,7 @@
 ##  other path
 * greet
   - utter_greet
-* mood{"mood": "__other__"}
+* mood
   - slot{"mood": "__other__"}
   - utter_other
 

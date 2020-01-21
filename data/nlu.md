@@ -55,6 +55,7 @@
 - my mood is [medium](mood)
 - my mood is [good](mood)
 - my mood is [bad](bad)
+- my mood is
 
 ## intent:bot_challenge
 - are you a bot?

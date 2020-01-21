@@ -6,7 +6,7 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
-  - mood
+  - mood: {use_entities: []}
 
 actions:
 - utter_greet
@@ -16,6 +16,7 @@ actions:
 - utter_goodbye
 - utter_iamabot
 - utter_other
+- utter_none
 
 entities:
   - mood 
@@ -30,7 +31,10 @@ slots:
 
 templates:
   utter_other:
-  - text: "Your mood is other"
+  - text: "Other"
+
+  utter_none:
+    - text: "None"
 
   utter_greet:
   - text: "Hey! How are you?"
@@ -41,6 +45,11 @@ templates:
 
   utter_did_that_help:
   - text: "Did that help you?"
+    buttons:
+    - title: "Yes"
+      payload: "Yes"
+    - title: "No"
+      payload: "No"
 
   utter_happy:
   - text: "Great, carry on!"
