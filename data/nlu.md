@@ -49,14 +49,6 @@
 - extremely sad
 - so sad
 
-## intent:mood
-- my mood is [low](mood)
-- my mood is [high](mood)
-- my mood is [medium](mood)
-- my mood is [good](mood)
-- my mood is [bad](bad)
-- my mood is
-
 ## intent:bot_challenge
 - are you a bot?
 - are you a human?
