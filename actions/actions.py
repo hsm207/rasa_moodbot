@@ -46,7 +46,7 @@ class FacebookMessengerList(Action):
                                 }
                 }
             }
-        }
+        
 
         dispatcher.utter_message(text="fb",json_message=bt)
         return []
