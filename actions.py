@@ -1,28 +1,52 @@
-# This files contains your custom actions which can be used to run
-# custom Python code.
-#
-# See this guide on how to implement these action:
-# https://rasa.com/docs/rasa/core/actions/#custom-actions/
+from typing import Dict, Text, Any, List, Union, Optional
 
+from rasa_sdk import Tracker 
+from rasa_sdk.executor import CollectingDispatcher 
+from rasa_sdk.forms import FormAction 
+from rasa_sdk import Action
 
-# This is a simple example for a custom action which utters "Hello World!"
+class FacebookMessengerList(Action):
 
-# from typing import Any, Text, Dict, List
-#
-# from rasa_sdk import Action, Tracker
-# from rasa_sdk.executor import CollectingDispatcher
-#
-#
-# class ActionHelloWorld(Action):
-#
-#     def name(self) -> Text:
-#         return "action_hello_world"
-#
-#     def run(self, dispatcher: CollectingDispatcher,
-#             tracker: Tracker,
-#             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-#
-#         dispatcher.utter_message(text="Hello World!")
-#
-#         return []
-from level.importfrom import Api
+    def name(self) -> Text:
+
+        return "action_fbmessenger_list"
+
+    def run(self,dispatcher,tracker,domain):
+        # bt =  { "text":"custom text",
+        #         "attachment":{
+        #             "type":"image", 
+        #             "payload":{
+        #                 "url":"http://www.messenger-rocks.com/image.jpg"
+        #             }
+        #             }
+        # }
+        bt= {        "attachment":{
+                                "type":"template",
+                                "payload":{
+                                    "template_type":"generic",
+                                    "elements":[
+                                                {
+                                                    "title":"Welcome!",
+                                                    "image_url":"https://petersfancybrownhats.com/company_image.png",
+                                                    "subtitle":"We have the right hat for everyone.",
+                                                    "default_action": {
+                                                                        "type": "web_url",
+                                                                        "url": "https://petersfancybrownhats.com/view?item=103",
+                                                                        "webview_height_ratio": "tall"
+                                                                        },
+                                                    "buttons":[
+                                                    {
+                                                        "type":"web_url",
+                                                        "url":"https://petersfancybrownhats.com",
+                                                        "title":"View Website"
+                                                    }            
+                                                    ]      
+                                                }
+                                    ]
+                                }
+                }
+            }
+        }
+
+        dispatcher.utter_message(text="fb",json_message=bt)
+        return []

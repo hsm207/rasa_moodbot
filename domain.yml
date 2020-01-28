@@ -1,13 +1,29 @@
+session_config:
+  session_expiration_time: 60.0
+  carry_over_slots_to_new_session: true
 intents:
-  - greet
-  - goodbye
-  - affirm
-  - deny
-  - mood_great
-  - mood_unhappy
-  - bot_challenge
-  - mood: {use_entities: []}
-
+- greet
+- goodbye
+- affirm
+- deny
+- mood_great
+- mood_unhappy
+- bot_challenge
+- fb
+templates:
+  utter_greet:
+  - text: Hey! How are you?
+  utter_cheer_up:
+  - text: 'Here is something to cheer you up:'
+    image: https://i.imgur.com/nGF1K8f.jpg
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_happy:
+  - text: Great, carry on!
+  utter_goodbye:
+  - text: Bye
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
 actions:
 - utter_greet
 - utter_cheer_up
@@ -15,51 +31,4 @@ actions:
 - utter_happy
 - utter_goodbye
 - utter_iamabot
-- utter_other
-- utter_none
-
-entities:
-  - mood 
-  
-slots:
-   mood:
-      type: categorical
-      values:
-      - low
-      - high
-
-
-templates:
-  utter_other:
-  - text: "Other"
-
-  utter_none:
-    - text: "None"
-
-  utter_greet:
-  - text: "Hey! How are you?"
-
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
-
-  utter_did_that_help:
-  - text: "Did that help you?"
-    buttons:
-    - title: "Yes"
-      payload: "Yes"
-    - title: "No"
-      payload: "No"
-
-  utter_happy:
-  - text: "Great, carry on!"
-
-  utter_goodbye:
-  - text: "Bye"
-
-  utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
-
-session_config:
-  session_expiration_time: 60
-  carry_over_slots_to_new_session: true
+- action_fbmessenger_list

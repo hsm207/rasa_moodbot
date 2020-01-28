@@ -1,6 +1,6 @@
 language: en
 pipeline: supervised_embeddings
 policies:
-- name: KerasPolicy
 - name: MemoizationPolicy
+- name: KerasPolicy
 - name: MappingPolicy
