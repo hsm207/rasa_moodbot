@@ -1,9 +1,9 @@
 language: en
-pipeline: 
-  - name: "WhitespaceTokenizer"
-  - name: "CountVectorsFeaturizer"
-  - name: "EmbeddingIntentClassifier"
-  - name: custom.customNLU.MyComponent
+pipeline:
+- name: WhitespaceTokenizer
+- name: CountVectorsFeaturizer
+- name: EmbeddingIntentClassifier
+- name: custom.customNLU.MyComponent
 policies:
 - name: MemoizationPolicy
 - name: KerasPolicy
