@@ -60,8 +60,8 @@ x-rasa-services: &default-rasa-service
     - rasa-x
     - rabbit
     - redis
-volumes:
-    - ./customNLU.py:/app/customNLU.py
+  volumes:
+    - ./custom:/app/custom
 
 services:
 

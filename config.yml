@@ -3,7 +3,7 @@ pipeline:
   - name: "WhitespaceTokenizer"
   - name: "CountVectorsFeaturizer"
   - name: "EmbeddingIntentClassifier"
-  - name: customNLU.MyComponent
+  - name: custom.customNLU.MyComponent
 policies:
 - name: MemoizationPolicy
 - name: KerasPolicy
