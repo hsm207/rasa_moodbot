@@ -27,7 +27,7 @@ jobs:
       run: |
         rasa test nlu -f 3 --cross-validation
         python .github/workflows/format_results.py
-      # if: data/nlu/** config.yml
+      if: contains( ${{ steps.files.outputs.all }}, "data/nlu" )
     # - name: post cross-val results to PR
     #   uses: amn41/comment-on-pr@comment-file-contents
     #   continue-on-error: true
