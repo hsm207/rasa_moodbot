@@ -7,6 +7,13 @@ jobs:
     name: Testing Stories
     runs-on: ubuntu-latest
     steps:
+    - name: Get changed files
+      uses: lots0logs/gh-action-get-changed-files@2.0.6
+      with:
+        token: GITHUB_TOKEN
+    - name: Print changed files
+      run: |
+        cat ${HOME}/files.json
     - uses: actions/checkout@v1
     - name: Set up Python 3.7
       uses: actions/setup-python@v1
@@ -16,13 +23,7 @@ jobs:
       run: |
         python -m pip install --upgrade "pip<20"
         pip install -r requirements-dev.txt
-    - name: Get changed files
-      uses: lots0logs/gh-action-get-changed-files@2.0.6
-      with:
-        token: GITHUB_TOKEN
-    - name: Print changed files
-      run: |
-        cat ${HOME}/files.json
+
     - name: Cross-validate NLU model
       run: |
         rasa test nlu -f 3 --cross-validation
