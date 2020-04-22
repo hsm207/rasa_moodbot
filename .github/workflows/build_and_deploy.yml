@@ -19,7 +19,7 @@ jobs:
         echo "Would cross validate"
       if: contains( ${{ steps.files.outputs.all }}, "data/nlu" )
     - name: post cross-val results to PR
-      if: success()
+      if: steps.cvnlu.outcome == 'success'
       run: |
         echo "Would post CV result"
     - name: Train Model
@@ -40,6 +40,6 @@ jobs:
     - name: Upload model
       if: |
           github.ref == 'refs/heads/master' 
-          && steps.train.conclusion == "success"
+          && steps.train.outcome == 'success'
       run: |
           echo "Would have uploaded a model"
