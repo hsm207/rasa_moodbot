@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Get changed files
-      uses: lots0logs/gh-action-get-changed-files@2.0.4
+      uses: lots0logs/gh-action-get-changed-files@2.0.5
       with:
         token: GITHUB_TOKEN
     - name: Print changed files
