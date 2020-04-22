@@ -13,43 +13,33 @@ jobs:
         for changed_file in ${{ steps.files.outputs.all }}; do
           echo "Do something with this ${changed_file}."
         done
-    - uses: actions/checkout@v1
-    - name: Set up Python 3.7
-      uses: actions/setup-python@v1
-      with:
-        python-version: 3.7
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade "pip<20"
-        pip install -r requirements-dev.txt
-
     - name: Cross-validate NLU model
+      id: cvnlu
       run: |
-        rasa test nlu -f 3 --cross-validation
-        python .github/workflows/format_results.py
+        echo "Would cross validate"
       if: contains( ${{ steps.files.outputs.all }}, "data/nlu" )
-    # - name: post cross-val results to PR
-    #   uses: amn41/comment-on-pr@comment-file-contents
-    #   continue-on-error: true
-    #   env:
-    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    #   with:
-    #     msg: results.md
-    #   # if: data/nlu/** config.yml
+    - name: post cross-val results to PR
+      if: steps.cvnlu.conclusion == "success"
+      run: |
+        echo "Would post CV result"
     - name: Train Model
-      working-directory: ${{ github.workspace }}
-      # if: data/** config.yml domain.yml
+      id: train
+      if: |
+        contains(  ${{ steps.files.outputs.all }}, data/ ) 
+        || contains(  ${{ steps.files.outputs.all }}, config.yml ) 
+        || contains(  ${{ steps.files.outputs.all }}, domain.yml )
       run: |
-        rasa train
+        echo "Would have trained a model"
     - name: Test Training Stories
-      working-directory: ${{ github.workspace }}
       run: |
-        rasa test core --stories test/test_stories.md --fail-on-prediction-errors
-      # if: data/core/** config.yml domain.yml
+        echo "Would have tested stories"
+      if: |
+        contains(  ${{ steps.files.outputs.all }}, data/core/ ) 
+        || contains(  ${{ steps.files.outputs.all }}, config.yml ) 
+        || contains(  ${{ steps.files.outputs.all }}, domain.yml )
     - name: Upload model
-      if: github.ref == 'refs/heads/master' 
-      # & data/** config.yml domain.yml
-      uses: actions/upload-artifact@master
-      with:
-        name: model
-        path: models
+      if: |
+          github.ref == 'refs/heads/master' 
+          && steps.train.conclusion == "success"
+      run: |
+          echo "Would have uploaded a model"
