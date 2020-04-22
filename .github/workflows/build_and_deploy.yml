@@ -29,14 +29,14 @@ jobs:
         rasa test nlu -f 3 --cross-validation
         python .github/workflows/format_results.py
       # if: data/nlu/** config.yml
-    - name: post cross-val results to PR
-      uses: amn41/comment-on-pr@comment-file-contents
-      continue-on-error: true
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        msg: results.md
-      # if: data/nlu/** config.yml
+    # - name: post cross-val results to PR
+    #   uses: amn41/comment-on-pr@comment-file-contents
+    #   continue-on-error: true
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #   with:
+    #     msg: results.md
+    #   # if: data/nlu/** config.yml
     - name: Train Model
       working-directory: ${{ github.workspace }}
       # if: data/** config.yml domain.yml
