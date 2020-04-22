@@ -60,6 +60,8 @@ x-rasa-services: &default-rasa-service
     - rasa-x
     - rabbit
     - redis
+  environment:
+    - PYTHONPATH=$PYTHONPATH:/app/
   volumes:
     - ./custom:/app/custom
 
