@@ -2,8 +2,9 @@ language: en
 pipeline:
 - name: WhitespaceTokenizer
 - name: CountVectorsFeaturizer
-- name: EmbeddingIntentClassifier
-- name: custom.customNLU.MyComponent
+- name: DIETClassifier
+  epochs: 1
+  
 policies:
 - name: MemoizationPolicy
 - name: KerasPolicy
