@@ -17,7 +17,7 @@ jobs:
       id: cvnlu
       run: |
         echo "Would cross validate"
-      if: contains( ${{ steps.files.outputs.all }}, "data/nlu" )
+      if: contains( steps.files.outputs.all, 'data/nlu' )
     - name: post cross-val results to PR
       if: steps.cvnlu.outcome == 'success'
       run: |
@@ -25,18 +25,18 @@ jobs:
     - name: Train Model
       id: train
       if: |
-        contains(  ${{ steps.files.outputs.all }}, data/ ) 
-        || contains(  ${{ steps.files.outputs.all }}, config.yml ) 
-        || contains(  ${{ steps.files.outputs.all }}, domain.yml )
+          contains(  ${{ steps.files.outputs.all }}, data/ ) 
+          || contains(  ${{ steps.files.outputs.all }}, config.yml ) 
+          || contains(  ${{ steps.files.outputs.all }}, domain.yml )
       run: |
         echo "Would have trained a model"
     - name: Test Training Stories
       run: |
         echo "Would have tested stories"
       if: |
-        contains(  ${{ steps.files.outputs.all }}, data/core/ ) 
-        || contains(  ${{ steps.files.outputs.all }}, config.yml ) 
-        || contains(  ${{ steps.files.outputs.all }}, domain.yml )
+          contains(  ${{ steps.files.outputs.all }}, data/core/ ) 
+          || contains(  ${{ steps.files.outputs.all }}, config.yml ) 
+          || contains(  ${{ steps.files.outputs.all }}, domain.yml )
     - name: Upload model
       if: |
           github.ref == 'refs/heads/master' 
