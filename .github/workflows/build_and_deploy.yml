@@ -45,4 +45,4 @@ jobs:
     #       echo "Would have uploaded a model"
     - name: NLU hyperoptimization
       id: nluhyperopt
-      users: RasaHQ/nlu-hyperopt@v0.1-alpha
+      uses: RasaHQ/nlu-hyperopt@v0.1-alpha
