@@ -1,12 +1,15 @@
 
-name: Build and Deploy
+name: nlu-hyperopt
 on: [pull_request]
 
 jobs:
-  training-testing:
-    name: Testing Stories
+  nlu-hyperopt:
+    name: NLU hyperoptimization
     runs-on: ubuntu-latest
     steps:
+      - name: NLU hyperoptimization
+        id: nluhyperopt
+        uses: RasaHQ/nlu-hyperopt@rasa-1-compat
     # - id: files
     #   uses: jitterbit/get-changed-files@v1
     # - run: |
