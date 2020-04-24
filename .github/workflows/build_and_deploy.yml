@@ -7,6 +7,7 @@ jobs:
     name: NLU hyperoptimization
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: Set up Python 3.7
         uses: actions/setup-python@v1
         with:
@@ -15,7 +16,6 @@ jobs:
         run: |
           python -m pip install --upgrade "pip<20"
           pip install -r requirements-dev.txt
-      - uses: actions/checkout@v2
       - name: Shuffle and split data
         run: |
           rasa data split nlu
