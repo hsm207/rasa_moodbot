@@ -25,11 +25,11 @@ jobs:
       - name: NLU hyperoptimization
         id: nluhyperopt
         uses: RasaHQ/nlu-hyperopt@rasa-1-compat
-        env:
-          DATA_DIR: $GITHUB_WORKSPACE/hyperopt_data
-          SEARCH_SPACE: $GITHUB_WORKSPACE/hyperopt_data/space.py
-          MAX_EVALS: 1
-          TARGET_METRIC: f1_score
+        input:
+          data-directory: $GITHUB_WORKSPACE/hyperopt_data
+          search-space: $GITHUB_WORKSPACE/hyperopt_data/space.py
+          max-evals: 1
+          target-metric: f1_score
     # - id: files
     #   uses: jitterbit/get-changed-files@v1
     # - run: |
