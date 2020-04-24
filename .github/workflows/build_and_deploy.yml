@@ -25,7 +25,7 @@ jobs:
       - name: NLU hyperoptimization
         id: nluhyperopt
         uses: RasaHQ/nlu-hyperopt@rasa-1-compat
-        input:
+        with:
           data-directory: $GITHUB_WORKSPACE/hyperopt_data
           search-space: $GITHUB_WORKSPACE/hyperopt_data/space.py
           max-evals: 1
