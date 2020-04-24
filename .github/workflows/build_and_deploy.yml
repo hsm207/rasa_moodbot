@@ -7,9 +7,28 @@ jobs:
     name: NLU hyperoptimization
     runs-on: ubuntu-latest
     steps:
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v1
+        with:
+        python-version: 3.7
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade "pip<20"
+          pip install -r requirements-dev.txt
+      - uses: actions/checkout@v2
+      - name: Shuffle and split data
+        run: |
+          rasa data split nlu
+          mv train_test_split/test_data.md hyperopt_data/validation.md
+          mv train_test_split/training_data.md hyperopt_data/train.md
       - name: NLU hyperoptimization
         id: nluhyperopt
         uses: RasaHQ/nlu-hyperopt@rasa-1-compat
+        env:
+          DATA_DIR: $GITHUB_WORKSPACE/hyperopt_data
+          SEARCH_SPACE: $GITHUB_WORKSPACE/hyperopt_data/space.py
+          MAX_EVALS: 1
+          TARGET_METRIC: f1_score
     # - id: files
     #   uses: jitterbit/get-changed-files@v1
     # - run: |
@@ -46,6 +65,3 @@ jobs:
     #       && steps.train.outcome == 'success'
     #   run: |
     #       echo "Would have uploaded a model"
-    - name: NLU hyperoptimization
-      id: nluhyperopt
-      uses: RasaHQ/nlu-hyperopt@v0.1-alpha
