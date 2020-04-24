@@ -26,10 +26,10 @@ jobs:
         id: nluhyperopt
         uses: RasaHQ/nlu-hyperopt@rasa-1-compat
         with:
-          data-directory: $GITHUB_WORKSPACE/hyperopt_data
-          search-space: $GITHUB_WORKSPACE/hyperopt_data/space.py
-          max-evals: 1
-          target-metric: f1_score
+          data_directory: $GITHUB_WORKSPACE/hyperopt_data
+          search_space: $GITHUB_WORKSPACE/hyperopt_data/space.py
+          max_evals: 1
+          target_metric: f1_score
     # - id: files
     #   uses: jitterbit/get-changed-files@v1
     # - run: |
