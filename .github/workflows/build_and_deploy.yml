@@ -21,13 +21,13 @@ jobs:
           rasa data split nlu
           mv train_test_split/test_data.md hyperopt_data/validation.md
           mv train_test_split/training_data.md hyperopt_data/train.md
-          ls $GITHUB_WORKSPACE/hyperopt_data/*
+          ls ${{ github.workspace }}/hyperopt_data/*
       - name: NLU hyperoptimization
         id: nluhyperopt
         uses: RasaHQ/nlu-hyperopt@rasa-1-compat
         with:
-          data_directory: $GITHUB_WORKSPACE/hyperopt_data
-          search_space: $GITHUB_WORKSPACE/hyperopt_data/space.py
+          data_directory: ${{ github.workspace }}/hyperopt_data
+          search_space: ${{ github.workspace }}/hyperopt_data/space.py
           max_evals: 1
           target_metric: f1_score
     # - id: files
