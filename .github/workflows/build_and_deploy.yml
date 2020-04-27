@@ -86,6 +86,10 @@ jobs:
         contains(  steps.files.outputs.all, ' actions/' ) 
         || contains(  steps.files.outputs.all, ' Dockerfile' )
       run: echo "::set-env name=ACTIONS::true"
+    - name: echo actions
+      run: |
+          echo $ACTIONS
+          echo [ $ACTIONS == 'true']
     - name: Authenticate into Google Cloud Platform
       if: env.ACTIONS == 'true'
       uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
