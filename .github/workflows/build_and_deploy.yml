@@ -5,7 +5,7 @@ jobs:
   training-testing:
     name: Testing Stories
     runs-on: ubuntu-latest
-    # needs: [data-validation]
+    needs: [data-validation]
     steps:
     - uses: actions/checkout@v1
     - id: files
@@ -27,6 +27,7 @@ jobs:
           python -m pip install --upgrade "pip<20"
           pip install -r requirements-dev.txt
     - name: Cross-validate NLU model
+      id: cvnlu
       if: |
           ( contains(github.event.pull_request.labels.*.name, 'nlu_testing_required') 
           && contains(  steps.files.outputs.all, ' data/nlu/' ) )
@@ -64,7 +65,7 @@ jobs:
         path: models
   build-images:
     name: Build and Push Images
-    # needs: [lint-testing, type-testing, training-testing]
+    needs: [lint-testing, type-testing, training-testing]
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
