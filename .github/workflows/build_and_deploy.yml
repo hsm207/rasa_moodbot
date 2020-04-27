@@ -18,6 +18,10 @@ jobs:
           || contains(  steps.files.outputs.all, 'config.yml' ) 
           || contains(  steps.files.outputs.all, 'domain.yml' )
       run: echo "::set-env name=TRAINING::true"
+    - name: echo training
+      run: |
+           echo env.TRAINING;
+           echo $TRAINING
     - name: Set up Python 3.7
       if: env.TRAINING==true
       uses: actions/setup-python@v1
