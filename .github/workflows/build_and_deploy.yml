@@ -2,133 +2,137 @@ name: Build and Deploy
 on: [pull_request]
 
 jobs:
-  training-testing:
-    name: Testing Stories
+#   training-testing:
+#     name: Testing Stories
+#     runs-on: ubuntu-latest
+#     needs: [data-validation]
+#     steps:
+#     - uses: actions/checkout@v1
+#     - id: files
+#       uses: jitterbit/get-changed-files@v1
+#     - name: set_training
+#       if: |
+#           contains(  steps.files.outputs.all, ' data/' ) 
+#           || contains(  steps.files.outputs.all, ' config.yml' ) 
+#           || contains(  steps.files.outputs.all, ' domain.yml' )
+#       run: echo "::set-env name=TRAINING::true"
+#     - name: Set up Python 3.7
+#       if: env.TRAINING == 'true'
+#       uses: actions/setup-python@v1
+#       with:
+#         python-version: 3.7
+#     - name: Install dependencies
+#       if: env.TRAINING == 'true'
+#       run: |
+#           python -m pip install --upgrade "pip<20"
+#           pip install -r requirements-dev.txt
+#     - name: Cross-validate NLU model
+#       id: cvnlu
+#       if: |
+#           ( contains(github.event.pull_request.labels.*.name, 'nlu_testing_required') 
+#           && contains(  steps.files.outputs.all, ' data/nlu/' ) )
+#           || contains(  steps.files.outputs.all, ' config.yml' )
+#       run: |  
+#           rasa test nlu -f 3 --cross-validation
+#           python .github/workflows/format_results.py
+#     - name: post cross-val results to PR
+#       if: steps.cvnlu.outcome == 'success'
+#       uses: amn41/comment-on-pr@comment-file-contents
+#       continue-on-error: true
+#       env:
+#         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#       with:
+#         msg: results.md
+#     - name: Train Model
+#       if: env.TRAINING == 'true'
+#       working-directory: ${{ github.workspace }}
+#       run: |
+#         rasa train
+#     - name: Test Training Stories
+#       if: |
+#           contains(  steps.files.outputs.all, ' data/core/' ) 
+#           || contains(  steps.files.outputs.all, ' config.yml' ) 
+#           || contains(  steps.files.outputs.all, ' domain.yml' )
+#       working-directory: ${{ github.workspace }}
+#       run: |
+#         rasa test core --stories test/test_stories.md --fail-on-prediction-errors
+#     - name: Upload model
+#       if: |
+#           env.TRAINING == 'true'
+#       uses: actions/upload-artifact@master
+#       with:
+#         name: model
+#         path: models
+#   build-images:
+#     name: Build and Push Images
+#     needs: [lint-testing, type-testing, training-testing]
+#     runs-on: ubuntu-latest
+#     steps:
+#     - uses: actions/checkout@v1
+#     - id: files
+#       uses: jitterbit/get-changed-files@v1
+#     - name: set_actions
+#       if: |
+#         contains(  steps.files.outputs.all, ' actions/' ) 
+#         || contains(  steps.files.outputs.all, ' Dockerfile' )
+#       run: echo "::set-env name=ACTIONS::true"
+#     - name: Authenticate into Google Cloud Platform
+#       if: env.ACTIONS == 'true'
+#       uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+#       with:
+#         version: '275.0.0'
+#         service_account_key: ${{ secrets.GCLOUD_AUTH }}
+#     - name: Configure Docker to use Google Cloud Platform
+#       if: env.ACTIONS == 'true'
+#       run: |
+#         gcloud auth configure-docker
+#     - name: Pull Latest Image
+#       if: env.ACTIONS == 'true'
+#       run: |
+#         docker pull gcr.io/replicated-test/rasa-demo:latest || true
+#     - name: Set Build ID from PR Ref
+#       if: env.ACTIONS == 'true'
+#       run: echo ::set-env name=BUILD_NUMBER::$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
+#     - name: Build Image
+#       if: env.ACTIONS == 'true'
+#       run: |
+#         docker build -t gcr.io/replicated-test/rasa-demo:pr$BUILD_NUMBER -t gcr.io/replicated-test/rasa-demo:latest --cache-from gcr.io/replicated-test/rasa-demo:latest .
+#     - name: Push PR Image to Google Cloud Container Registry
+#       if: env.ACTIONS == 'true'
+#       run: |
+#         docker push gcr.io/replicated-test/rasa-demo:pr$BUILD_NUMBER
+  nlu-hyperopt:
+    name: NLU hyperoptimization
     runs-on: ubuntu-latest
-    needs: [data-validation]
     steps:
-    - uses: actions/checkout@v1
-    - id: files
-      uses: jitterbit/get-changed-files@v1
-    - name: set_training
-      if: |
-          contains(  steps.files.outputs.all, ' data/' ) 
-          || contains(  steps.files.outputs.all, ' config.yml' ) 
-          || contains(  steps.files.outputs.all, ' domain.yml' )
-      run: echo "::set-env name=TRAINING::true"
-    - name: Set up Python 3.7
-      if: env.TRAINING == 'true'
-      uses: actions/setup-python@v1
-      with:
-        python-version: 3.7
-    - name: Install dependencies
-      if: env.TRAINING == 'true'
-      run: |
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.7
+      - name: Install dependencies
+        run: |
           python -m pip install --upgrade "pip<20"
           pip install -r requirements-dev.txt
-    - name: Cross-validate NLU model
-      id: cvnlu
-      if: |
-          ( contains(github.event.pull_request.labels.*.name, 'nlu_testing_required') 
-          && contains(  steps.files.outputs.all, ' data/nlu/' ) )
-          || contains(  steps.files.outputs.all, ' config.yml' )
-      run: |  
-          rasa test nlu -f 3 --cross-validation
-          python .github/workflows/format_results.py
-    - name: post cross-val results to PR
-      if: steps.cvnlu.outcome == 'success'
-      uses: amn41/comment-on-pr@comment-file-contents
-      continue-on-error: true
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        msg: results.md
-    - name: Train Model
-      if: env.TRAINING == 'true'
-      working-directory: ${{ github.workspace }}
-      run: |
-        rasa train
-    - name: Test Training Stories
-      if: |
-          contains(  steps.files.outputs.all, ' data/core/' ) 
-          || contains(  steps.files.outputs.all, ' config.yml' ) 
-          || contains(  steps.files.outputs.all, ' domain.yml' )
-      working-directory: ${{ github.workspace }}
-      run: |
-        rasa test core --stories test/test_stories.md --fail-on-prediction-errors
-    - name: Upload model
-      if: |
-          env.TRAINING == 'true'
-      uses: actions/upload-artifact@master
-      with:
-        name: model
-        path: models
-  build-images:
-    name: Build and Push Images
-    needs: [lint-testing, type-testing, training-testing]
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v1
-    - id: files
-      uses: jitterbit/get-changed-files@v1
-    - name: set_actions
-      if: |
-        contains(  steps.files.outputs.all, ' actions/' ) 
-        || contains(  steps.files.outputs.all, ' Dockerfile' )
-      run: echo "::set-env name=ACTIONS::true"
-    - name: Authenticate into Google Cloud Platform
-      if: env.ACTIONS == 'true'
-      uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
-      with:
-        version: '275.0.0'
-        service_account_key: ${{ secrets.GCLOUD_AUTH }}
-    - name: Configure Docker to use Google Cloud Platform
-      if: env.ACTIONS == 'true'
-      run: |
-        gcloud auth configure-docker
-    - name: Pull Latest Image
-      if: env.ACTIONS == 'true'
-      run: |
-        docker pull gcr.io/replicated-test/rasa-demo:latest || true
-    - name: Set Build ID from PR Ref
-      if: env.ACTIONS == 'true'
-      run: echo ::set-env name=BUILD_NUMBER::$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
-    - name: Build Image
-      if: env.ACTIONS == 'true'
-      run: |
-        docker build -t gcr.io/replicated-test/rasa-demo:pr$BUILD_NUMBER -t gcr.io/replicated-test/rasa-demo:latest --cache-from gcr.io/replicated-test/rasa-demo:latest .
-    - name: Push PR Image to Google Cloud Container Registry
-      if: env.ACTIONS == 'true'
-      run: |
-        docker push gcr.io/replicated-test/rasa-demo:pr$BUILD_NUMBER
-      
-  # nlu-hyperopt:
-  #   name: NLU hyperoptimization
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - name: Set up Python 3.7
-  #       uses: actions/setup-python@v1
-  #       with:
-  #         python-version: 3.7
-  #     - name: Install dependencies
-  #       run: |
-  #         python -m pip install --upgrade "pip<20"
-  #         pip install -r requirements-dev.txt
-  #     - name: Shuffle and split data
-  #       run: |
-  #         rasa data split nlu
-  #         mv train_test_split/test_data.md hyperopt_data/validation.md
-  #         mv train_test_split/training_data.md hyperopt_data/train.md
-  #         ls ${{ github.workspace }}/hyperopt_data/*
-  #     - name: NLU hyperoptimization
-  #       id: nluhyperopt
-  #       uses: RasaHQ/nlu-hyperopt@rasa-1-compat
-  #       with:
-  #         data_directory: ${{ github.workspace }}/hyperopt_data
-  #         search_space: ${{ github.workspace }}/hyperopt_data/space.py
-  #         max_evals: 1
-  #         target_metric: f1_score
+      - name: Shuffle and split data
+        run: |
+          rasa data split nlu
+          mv train_test_split/test_data.md hyperopt_data/validation.md
+          mv train_test_split/training_data.md hyperopt_data/train.md
+          ls ${{ github.workspace }}/hyperopt_data/*
+      - name: NLU hyperoptimization
+        id: nluhyperopt
+        uses: RasaHQ/nlu-hyperopt@rasa-1-compat
+        with:
+          data_directory: ${{ github.workspace }}/hyperopt_data
+          search_space: ${{ github.workspace }}/hyperopt_data/space.py
+          max_evals: 1
+          target_metric: f1_score
+      - name: print output
+        run: |
+          echo steps.nluhyperopt.outputs.best_config
+
+
     # - id: files
     #   uses: jitterbit/get-changed-files@v1
     # - run: |
