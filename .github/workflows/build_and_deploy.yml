@@ -31,7 +31,7 @@ jobs:
           target_metric: f1_score
       - name: print output
         run: |
-            echo ${{steps.nluhyperopt.outputs}}
+            echo ${{steps.nluhyperopt.outputs.best_config}}
 
 
     # - id: files
