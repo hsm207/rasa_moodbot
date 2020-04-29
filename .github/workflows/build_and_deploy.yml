@@ -25,14 +25,13 @@ jobs:
         id: nluhyperopt
         uses: RasaHQ/nlu-hyperopt@rasa-1-compat
         with:
-          data_directory: ${{ github.workspace }}/hyperopt_data
-          search_space: ${{ github.workspace }}/hyperopt_data/space.py
+          data_directory: ./hyperopt_data
+          search_space: ./hyperopt_data/space.py
           max_evals: 1
           target_metric: f1_score
       - name: print output
         run: |
-            echo ${{ steps.nluhyperopt.outputs.best_config }}
-            echo ${{ steps.nluhyperopt.outputs.all }}
+            echo ${{steps.nluhyperopt.outputs}}
 
 
     # - id: files
