@@ -17,4 +17,4 @@ jobs:
             echo ::set-env name=BUILD_NUMBER::$GITHUB_RUN_NUMBER-$GITHUB_RUN_ID
         - name: echo BUILD_NUMBER
           run: |
-            echo $BUIKD_NUMBER
+            echo $BUILD_NUMBER
