@@ -1,3 +1,4 @@
+<!---->
 ## intent:greet
 - hey
 - hello
@@ -51,7 +52,7 @@
 - so sad
 
 ## intent:bot_challenge
-- are you a bot?
-- are you a human?
+- are you a [bot](bot)?
+- are you a [human](human)?
 - am I talking to a bot?
 - am I talking to a human?
