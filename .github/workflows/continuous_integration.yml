@@ -11,7 +11,6 @@ jobs:
 
     steps:
         - name: Set Build ID from PR Ref
-          # if: ${{ github.event.pull_request.merged }} == true
           run: |
             echo $GITHUB_RUN_ID
-            echo $GITHUB_RUN_NUMNER
+            echo $GITHUB_RUN_NUMBER
