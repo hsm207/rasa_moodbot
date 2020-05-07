@@ -1,0 +1,19 @@
+name: Continuous Integration
+on:
+  push:
+    branches:
+    - master
+    paths:
+    - 'actions/**'
+
+jobs:
+  docker:
+    name: Build Action Server Docker Image
+    runs-on: ubuntu-latest
+
+    steps:
+        - name: Set Build ID from PR Ref
+          if: github.event.pull_request.merged == true
+          run: |
+            echo ::set-env name=BUILD_NUMBER::$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
+            echo $BUILD_NUMBER
