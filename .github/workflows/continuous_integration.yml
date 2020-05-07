@@ -13,7 +13,5 @@ jobs:
         - name: Set Build ID from PR Ref
           # if: ${{ github.event.pull_request.merged }} == true
           run: |
-            echo ::set-env name=BUILD_NUMBER::$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
-            echo env.BUILD_NUMBER
-            echo ${{ github.event.pull_request.merged }}
             echo $GITHUB_RUN_ID
+            echo $GITHUB_RUN_NUMNER
