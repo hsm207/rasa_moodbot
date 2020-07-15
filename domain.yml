@@ -1,5 +1,5 @@
 session_config:
-  session_expiration_time: 60.0
+  session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
 - greet
@@ -9,15 +9,17 @@ intents:
 - mood_great
 - mood_unhappy
 - bot_challenge
-- fb
-templates:
+entities:
+- bot
+- human
+responses:
   utter_greet:
   - text: Hey! How are you?
   utter_cheer_up:
-  - text: 'Here is something to cheer you up:'
-    image: https://i.imgur.com/nGF1K8f.jpg
+  - image: https://i.imgur.com/nGF1K8f.jpg
+    text: 'Here is something to cheer you up:'
   utter_did_that_help:
-  - text: Did that help you?
+  - text: Did that help you at all?
   utter_happy:
   - text: Great, carry on!
   utter_goodbye:
@@ -31,4 +33,3 @@ actions:
 - utter_happy
 - utter_goodbye
 - utter_iamabot
-- action_fbmessenger_list

@@ -1,4 +1,3 @@
-<!---->
 ## intent:greet
 - hey
 - hello
@@ -6,6 +5,9 @@
 - good morning
 - good evening
 - hey there
+- hallo
+- hey again
+- Hallo
 
 ## intent:goodbye
 - bye
@@ -19,6 +21,7 @@
 - of course
 - that sounds good
 - correct
+- ok
 
 ## intent:deny
 - no

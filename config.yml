@@ -3,10 +3,9 @@ pipeline:
 - name: WhitespaceTokenizer
 - name: CountVectorsFeaturizer
 - name: DIETClassifier
-  epochs: 1
-  
+  epochs: 10
 policies:
 - name: MemoizationPolicy
 - name: KerasPolicy
+  epochs: 100
 - name: MappingPolicy
-#
