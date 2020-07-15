@@ -14,7 +14,17 @@ entities:
 - human
 responses:
   utter_greet:
-  - text: Hey! How are you?
+  - text: Hi !
+    buttons:
+    - content_type: text
+      title: text here
+      payload: /intenthere
+  - text: Hi !
+    channel: facebook
+    quick_replies:
+    - content_type: text
+      title: texthere
+      payload: /intenthere
   utter_cheer_up:
   - image: https://i.imgur.com/nGF1K8f.jpg
     text: 'Here is something to cheer you up:'
