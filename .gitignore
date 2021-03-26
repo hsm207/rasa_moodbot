@@ -1,6 +1,0 @@
-.DS_Store
-models/*
-/models
-results/*
-/results
-**/__pycache__/**
