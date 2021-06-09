@@ -1,0 +1,5 @@
+nlu:
+- synonym: new york
+  examples: |
+    - nyc
+    - ny
