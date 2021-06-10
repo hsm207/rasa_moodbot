@@ -13,8 +13,10 @@ from rasa.core.channels.channel import (
     UserMessage,
     OutputChannel,
     InputChannel,
-    QueueOutputChannel,
 )
+
+from rasa.core.channels.rest import QueueOutputChannel
+
 from sanic.response import HTTPResponse
 
 try:
@@ -23,6 +25,11 @@ except ImportError:
     from urllib.parse import urljoin
 
 logger = logging.getLogger(__name__)
+
+
+def remove_none_values(obj: Dict[Text, Any]) -> Dict[Text, Any]:
+    """Remove all keys that store a `None` value."""
+    return {k: v for k, v in obj.items() if v is not None}
 
 
 class CollectingOutputChannel(OutputChannel):
@@ -49,7 +56,7 @@ class CollectingOutputChannel(OutputChannel):
 
     async def _persist_message(self, message: Dict[Text, Any]) -> None:
         self.messages.append(
-            utils.remove_none_values(message)
+            remove_none_values(message)
         )  # pytype: disable=bad-return-type
 
 
