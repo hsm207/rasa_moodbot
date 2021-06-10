@@ -1,0 +1,13 @@
+{
+  "body": {
+    "content": "ewogICJzZW5kZXIiOiAidGVzdF91c2VyIiwgIAogICJtZXNzYWdlIjogIkkgYW0gc2FkISIKfQ==",
+    "file": false,
+    "fileSize": false
+  },
+  "headers": {
+    "content-type": "application/json"
+  },
+  "method": "POST",
+  "title": "Test Standard Rest Channel",
+  "url": "http://localhost:5005/webhooks/rest/webhook"
+}
