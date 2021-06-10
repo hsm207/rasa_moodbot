@@ -69,7 +69,7 @@ class CustomRestInput(InputChannel):
 
     @classmethod
     def name(cls) -> Text:
-        return "custom"
+        return "custom_rest"
 
     @staticmethod
     async def on_message_wrapper(
