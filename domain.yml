@@ -19,10 +19,27 @@ intents:
     use_entities: true
 - bot_challenge:
     use_entities: true
-entities: []
-slots: {}
+entities:
+  - role
+slots:
+  role:
+    influence_conversation: True
+    type: categorical
+    values:
+      - associate
+      - manager
 responses:
   utter_greet:
+  - condition:
+    - type: slot
+      name: role
+      value: manager
+    text: "hello manager"
+  - condition:
+    - type: slot
+      name: role
+      value: associate
+    text: "hello associate"
   - text: Hey! How are you?
   utter_cheer_up:
   - image: https://i.imgur.com/nGF1K8f.jpg

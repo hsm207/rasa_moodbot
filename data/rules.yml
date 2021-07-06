@@ -12,3 +12,4 @@ rules:
   steps:
   - intent: greet
   - action: utter_greet
+  wait_for_user_input: false

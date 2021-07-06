@@ -28,3 +28,19 @@ stories:
   - action: utter_did_that_help
   - intent: deny
   - action: utter_goodbye
+
+- story: manager role -> happy
+  steps:
+  - intent: greet
+  - slot_was_set:
+    - role: manager
+  - action: utter_greet
+  - action: utter_happy
+  
+- story: associate role -> sad
+  steps:
+  - intent: greet
+  - slot_was_set:
+    - role: associate
+  - action: utter_greet
+  - action: utter_cheer_up
