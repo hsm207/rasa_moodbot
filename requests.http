@@ -1,0 +1,31 @@
+###
+GET http://localhost:5005/
+
+####
+GET http://localhost:5005/version
+
+###
+GET http://localhost:5005/status
+
+###
+GET http://localhost:5005/conversations/abc123/tracker
+
+###
+POST http://localhost:5005/conversations/localhost:5005/conversations/abc123/tracker/messages?include_events=ALL
+Content-Type: application/json
+
+{
+  "text": "i am sad",
+  "sender": "user"
+  
+}
+
+###
+POST http://localhost:5005/conversations/abc123/trigger_intent
+
+{
+    "name": "greet"
+}
+
+###
+POST http://localhost:5005/conversations/abc123/predict
