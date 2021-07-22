@@ -1,8 +1,8 @@
-import time
-from locust import HttpUser, task, between
 import random
 import string
-import json
+import time
+
+from locust import HttpUser, between, task
 
 
 class RasaRestUser(HttpUser):
