@@ -12,3 +12,45 @@ rules:
   steps:
   - intent: greet
   - action: utter_greet
+
+- rule: Manually trigger the ask number validation loop
+  steps:
+  - intent: trigger_ask_number
+  - action: utter_ask_number
+
+- rule: Validate the user's input
+  condition:
+  - slot_was_set:
+    - is_retry_limit: False
+  steps:
+  - intent: inform
+  - action: action_validate_user_input
+
+- rule: Already reached retry limit
+  condition:
+  - slot_was_set:
+    - is_retry_limit: True
+  steps:
+  - action: action_validate_user_input
+  - action: utter_try_something_else
+
+- rule: Successfully validated
+  condition:
+  - slot_was_set:
+    - is_retry_limit: False
+  steps:
+    - action: action_validate_user_input
+    - slot_was_set:
+       - is_validated: True
+    - action: utter_validate
+
+- rule: Unsuccessfully validated
+  condition:
+  - slot_was_set:
+    - is_retry_limit: False
+  steps:
+    - action: action_validate_user_input
+    - slot_was_set:
+       - is_validated: False
+       - is_retry_limit: False
+    - action: utter_validate

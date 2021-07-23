@@ -1,4 +1,16 @@
 version: '2.0'
+slots:
+  is_retry_limit:
+    type: bool
+    initial_value: false
+  is_validated:
+    type: bool
+    initial_value: false
+  num_retries:
+      type: any
+      initial_value: 1
+  user_number:
+      type: any
 config:
   store_entities_as_slots: true
 session_config:
@@ -19,8 +31,9 @@ intents:
     use_entities: true
 - bot_challenge:
     use_entities: true
+- inform
+- trigger_ask_number
 entities: []
-slots: {}
 responses:
   utter_greet:
   - text: Hey! How are you?
@@ -35,6 +48,15 @@ responses:
   - text: Bye
   utter_iamabot:
   - text: I am a bot, powered by Rasa.
-actions: []
+  utter_ask_number:
+  - text: "Please enter a number between 1 and 10"
+  utter_try_again:
+  - text: "Please try again (Total attempts: {num_retries})"
+  utter_try_something_else:
+  - text: "Let's try something else"
+  utter_validate:
+  - text: "Thank you! You entered {user_number}"
+actions:
+  - action_validate_user_input
 forms: {}
 e2e_actions: []
