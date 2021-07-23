@@ -1,0 +1,22 @@
+version: '3.4'
+
+services:
+  rasamoodbot:
+    image: rasamoodbot
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    entrypoint: bash
+    command: >
+      -c "rasa train && rasa run -vv --enable-api"
+    volumes:
+      - ".:/app"
+    ports: 
+      - "5005:5005"
+    depends_on: 
+      - rabbit_event_broker
+  
+  rabbit_event_broker:
+    image: rabbitmq:management
+    ports: 
+      - "15672:15672"
