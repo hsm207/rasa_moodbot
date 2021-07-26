@@ -17,19 +17,23 @@ class RasaRestUser(HttpUser):
 
         self.user = "".join(random.choices(string.ascii_letters, k=10))
 
-    def _say_something(self, utterance: str) -> None:
+    def _say_something(self, utterance: str, label: str) -> None:
         self.client.post(
-            "/webhooks/rest/webhook", json={"sender": self.user, "message": utterance}
+            "/webhooks/rest/webhook",
+            json={"sender": self.user, "message": utterance},
+            name=label,
         )
 
     @task
     def act_happy(self):
-        self._say_something("Hello!")
-        self._say_something("I feel great")
-        self._say_something("bye bye")
+        conv_label = "happy_conv"
+        self._say_something("Hello!", label=conv_label)
+        self._say_something("I feel great", label=conv_label)
+        self._say_something("bye bye", label=conv_label)
 
     @task
     def act_sad(self):
-        self._say_something("hi")
-        self._say_something("I am sad")
-        self._say_something("No")
+        conv_label = "sad_conv"
+        self._say_something("hi", label=conv_label)
+        self._say_something("I am sad", label=conv_label)
+        self._say_something("No", label=conv_label)
