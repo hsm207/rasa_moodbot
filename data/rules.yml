@@ -44,6 +44,14 @@ rules:
        - is_validated: True
     - action: utter_validate
 
+# this is a dummy rule just to not get this warning:
+# /opt/venv/lib/python3.8/site-packages/rasa/shared/utils/io.py:97: UserWarning: Action 'action_validate_user_input' set slot type 'bool' which it never set during the training. This can throw off the prediction. Make sure to include training examples in your stories for the different types of slots this action can return. Remember: you need to set the slots manually in the stories by adding the following lines after the action:
+
+# - action: action_validate_user_input
+# - slot_was_set:
+#   - is_retry_limit: True
+
+#   More info at https://rasa.com/docs/rasa/domain#slots
 - rule: Unsuccessfully validated
   condition:
   - slot_was_set:
