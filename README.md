@@ -1,6 +1,6 @@
 # Introduction
 
-This repo demonstrates how to build a input validation loop using [Rules](https://rasa.com/docs/rasa/rules).
+This repo demonstrates how to build an input validation loop using [Rules](https://rasa.com/docs/rasa/rules).
 
 For more complex use cases, consider using [Forms](https://rasa.com/docs/rasa/forms) with a [custom action to validate the extracted input](https://rasa.com/docs/rasa/forms#validating-form-input). You can break out of a form's loop by returning the [ActionExecutionRejected](https://rasa.com/docs/rasa/forms#writing-stories--rules-for-unhappy-form-paths) event in the form's validation logic.
 
