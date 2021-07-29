@@ -2,3 +2,5 @@ models
 __pycache__
 .config
 .keras
+events.db*
+rasa.db
