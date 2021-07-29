@@ -1,5 +1,14 @@
 version: "2.0"
 nlu:
+- intent: check_balance
+  examples: |
+    - how much do I have on my [credit card account](account)
+    - how much do I owe on my [credit account](account)
+- synonym: credit
+  examples: |
+    - credit card account
+    - credit account
+    - card
 - intent: greet
   examples: |
     - hey

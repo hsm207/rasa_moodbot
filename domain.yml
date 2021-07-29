@@ -19,8 +19,7 @@ intents:
     use_entities: true
 - bot_challenge:
     use_entities: true
-entities: []
-slots: {}
+- check_balance
 responses:
   utter_greet:
   - text: Hey! How are you?
@@ -35,6 +34,10 @@ responses:
   - text: Bye
   utter_iamabot:
   - text: I am a bot, powered by Rasa.
+  utter_high_risk:
+  - text: You are a high risk
+  utter_low_risk:
+  - text: You are no risk
 actions: []
 forms: {}
 e2e_actions: []
