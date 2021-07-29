@@ -26,7 +26,6 @@ nlu:
     - good afternoon
 - intent: goodbye
   examples: |
-    - good afternoon
     - cu
     - good by
     - cee you later
@@ -94,3 +93,8 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+
+- intent: check_balance
+  examples: |
+    - how much do I have on my [credit card account]{"entity": "account", "value": "credit"}
+    - how much do I owe on my [credit account]{"entity": "account", "value": "credit"}
