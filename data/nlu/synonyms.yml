@@ -1,5 +1,0 @@
-nlu:
-- synonym: credit
-  examples: |
-    - credit card account
-    - credit account
