@@ -2,29 +2,40 @@ version: "2.0"
 
 stories:
 
-- story: happy path
+- story: new contract
   steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
+  - intent: order_phone
+  - action: utter_ask_contract_type
+  - intent: inform_new_contract
+  - action: utter_confirm_new
 
-- story: sad path 1
+- story: extend contract
   steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
+  - intent: order_phone
+  - action: utter_ask_contract_type
+  - intent: inform_contract_extension
+  - action: utter_confirm_extension
 
-- story: sad path 2
+- story: just the phone - 1
   steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: deny
-  - action: utter_goodbye
+  - action: utter_ask_contract_type
+  - user: just the phone
+  - action: utter_confirm_justphone
+
+- story: just the phone - 2
+  steps:
+  - action: utter_ask_contract_type
+  - user: no contract
+  - action: utter_confirm_justphone
+
+- story: just the phone - 3
+  steps:
+  - action: utter_ask_contract_type
+  - user: just the cell phone
+  - action: utter_confirm_justphone
+
+- story: just the phone - 4
+  steps:
+  - action: utter_ask_contract_type
+  - user: alone
+  - action: utter_confirm_justphone

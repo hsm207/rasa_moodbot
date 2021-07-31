@@ -1,0 +1,19 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Rasa shell",
+            "type": "python",
+            "request": "launch",
+            "module": "rasa",
+            "args": ["shell", "-vv"],
+            "justMyCode": false,
+            "environment": {
+                "DEFAULT_STREAM_READING_TIMEOUT_IN_SECONDS": 3600
+            }
+        }
+    ]
+}
