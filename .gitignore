@@ -2,3 +2,8 @@ models
 __pycache__
 .config
 .keras
+events*
+*.db
+train_test_split
+results
+tensorboard
