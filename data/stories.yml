@@ -28,3 +28,19 @@ stories:
   - action: utter_did_that_help
   - intent: deny
   - action: utter_goodbye
+
+- story: Interupt install process
+  steps:
+  - intent: ask_how_to_install
+  - action: utter_install_step1
+  - intent: ask_weather
+  - action: utter_weather
+  - action: utter_continue_install
+
+- story: Interupt uninstall process
+  steps:
+  - intent: ask_how_to_uninstall
+  - action: utter_uninstall_step1
+  - intent: ask_weather
+  - action: utter_weather
+  - action: utter_continue_uninstall

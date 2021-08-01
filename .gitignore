@@ -7,3 +7,4 @@ events*
 train_test_split
 results
 tensorboard
+.DS_Store
