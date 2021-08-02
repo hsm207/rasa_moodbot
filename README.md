@@ -21,3 +21,9 @@ rasa shell --model models/max_hist_2 -vv
 /ask_weather
 ```
 The model trained with config `config_max_hist_2.yml` will predict action listen but the one trained with config `config_max_hist_3.yml` will predict the correct action i.e. `utter_continue_install`.
+
+4. Also, try:
+```
+rasa test core --model models/max_hist_2 --out results/max_hist_2 && \
+    rasa test core --model models/max_hist_3 --out results/max_hist_3
+```
