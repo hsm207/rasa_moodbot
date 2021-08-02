@@ -8,7 +8,14 @@ rules:
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
-- rule: Untitled Rule
+- rule: Greet with no name
   steps:
   - intent: greet
   - action: utter_greet
+- rule: Greet with name
+  condition:
+  - slot_was_set:
+    - name
+  steps:
+  - intent: greet
+  - action: utter_greet_with_name

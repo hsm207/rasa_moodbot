@@ -10,3 +10,41 @@ content-type: application/json
 ###
 ## extracting the events from a conversation
 GET http://localhost:5005/conversations/test_user/tracker
+
+
+# to test carry_over_slots_to_new_session
+### turn 1
+POST http://localhost:5005/webhooks/rest/webhook
+content-type: application/json
+
+{
+    "sender": "test_user",
+    "message": "/greet{\"name\": \"sally\"}"
+}
+
+### turn 2
+POST http://localhost:5005/webhooks/rest/webhook
+content-type: application/json
+
+{
+    "sender": "test_user",
+    "message": "/greet"
+}
+
+### turn 3
+POST http://localhost:5005/webhooks/rest/webhook
+content-type: application/json
+
+{
+    "sender": "test_user",
+    "message": "/session_start"
+}
+
+### turn 3
+POST http://localhost:5005/webhooks/rest/webhook
+content-type: application/json
+
+{
+    "sender": "test_user",
+    "message": "/greet"
+}
