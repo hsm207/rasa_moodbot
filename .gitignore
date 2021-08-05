@@ -2,3 +2,10 @@ models
 __pycache__
 .keras
 .config
+.bash_history
+.DS_Store
+train_test_split
+results
+events.*
+rasa.db
+tensorboard
