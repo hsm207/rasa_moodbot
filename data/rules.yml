@@ -1,14 +1,45 @@
 version: "2.0"
+
 rules:
+
 - rule: Say goodbye anytime the user says goodbye
   steps:
   - intent: goodbye
   - action: utter_goodbye
+
 - rule: Say 'I am a bot' anytime the user challenges
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
-- rule: Untitled Rule
+
+- rule: Activate form to collect phone number
   steps:
-  - intent: greet
-  - action: utter_greet
+  - intent: inform_phonenumber
+  - action: action_prefill_phonecall_form
+  - action: phonecall_form
+  - active_loop: phonecall_form
+  wait_for_user_input: false
+
+- rule: Submit the phone call form
+  condition:
+  - active_loop: phonecall_form
+  steps:
+  - action: phonecall_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+    - is_valid_number: true
+    - number: 123
+  - action: utter_submit_number
+
+- rule: Try something else because user provided invalid number
+  condition:
+  - active_loop: phonecall_form
+  steps:
+  - action: phonecall_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+    - is_valid_number: false
+    - number
+  - action: utter_try_something_else

@@ -5,6 +5,8 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
+- inform_phonenumber:
+    use_entities: true
 - greet:
     use_entities: true
 - goodbye:
@@ -19,9 +21,46 @@ intents:
     use_entities: true
 - bot_challenge:
     use_entities: true
-entities: []
-slots: {}
+entities:
+- mobile_number
+- fixedline_number
+slots:
+  number:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  mobile_number:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  fixedline_number:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  retries:
+    type: rasa.shared.core.slots.AnySlot
+    initial_value: 0
+    auto_fill: true
+    influence_conversation: false
+  is_valid_number:
+    type: rasa.shared.core.slots.BooleanSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
 responses:
+  utter_try_something_else:
+  - text: Let's try something else
+  utter_ask_phonecall_form_number:
+  - text: What is your number?
+  utter_invalid_number:
+  - text: Unfortunately, the number {number} is invalid
+  utter_giveup_number_validation:
+  - text: I'm really sorry that I still didn't get that right
+  utter_submit_number:
+  - text: We will contact you at {number} shortly
   utter_greet:
   - text: Hey! How are you?
   utter_cheer_up:
@@ -35,6 +74,13 @@ responses:
   - text: Bye
   utter_iamabot:
   - text: I am a bot, powered by Rasa.
-actions: []
-forms: {}
+actions:
+- validate_phonecall_form
+- action_prefill_phonecall_form
+forms:
+  phonecall_form:
+    required_slots:
+      number:
+      - intent: null
+        type: from_text
 e2e_actions: []

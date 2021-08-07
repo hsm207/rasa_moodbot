@@ -1,0 +1,40 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "rasa train",
+            "type": "python",
+            "request": "launch",
+            "module": "rasa",
+            "args": ["train"]
+        },
+        {
+            "name": "rasa shell",
+            "type": "python",
+            "request": "launch",
+            "module": "rasa",
+            "justMyCode": false,
+            "args": [
+                "shell", "-vv"
+            ],
+            "environment": {
+                "DEFAULT_STREAM_READING_TIMEOUT_IN_SECONDS": 3600
+            }
+           
+        },
+        {
+            "name": "rasa action server",
+            "type": "python",
+            "request": "launch",
+            "module": "rasa",
+            "justMyCode": false,
+            "args": [
+                "run", "actions", "-vv", "--auto-reload"
+            ],
+           
+        }
+    ]
+}
