@@ -9,7 +9,7 @@
             "command": "code `pip show rasa | grep Location | cut -d ' ' -f 2 | awk '{print $1\"/rasa\"}'`",
             "presentation": {
                 "echo": true,
-                "reveal": "revealProblems",
+                "reveal": "silent",
                 "focus": false,
                 "panel": "shared",
                 "showReuseMessage": true,
