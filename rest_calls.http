@@ -1,0 +1,12 @@
+## talking to the bot on the rest channel
+POST http://localhost:5005/webhooks/rest/webhook
+content-type: application/json
+
+{
+    "sender": "test_user",
+    "message": "I am not very sad"
+}
+
+###
+## extracting the events from a conversation
+GET http://localhost:5005/conversations/test_user/tracker
