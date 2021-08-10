@@ -20,7 +20,9 @@ intents:
 - bot_challenge:
     use_entities: true
 entities: []
-slots: {}
+slots:
+  name:
+    type: text
 responses:
   utter_greet:
   - text: Hey! How are you?
