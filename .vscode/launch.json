@@ -10,7 +10,12 @@
             "request": "launch",
             "module": "rasa",
             "justMyCode": false,
-            "args": ["run", "actions", "-vv", "--auto-reload"]
+            "args": [
+                "run",
+                "actions",
+                "-vv",
+                "--auto-reload"
+            ]
         }
     ]
 }
