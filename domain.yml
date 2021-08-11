@@ -21,8 +21,11 @@ intents:
     use_entities: true
 entities: []
 slots:
-  name:
+  username:
     type: text
+  is_loggedin:
+    type: bool
+
 responses:
   utter_greet:
   - text: Hey! How are you?
