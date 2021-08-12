@@ -3,7 +3,7 @@ from rasa_sdk.events import SlotSet
 from typing import Any, Text, Dict, List, Set
 import pytest
 
-from tests.test_utils import *
+from tests.test_utils import is_same_slots, extract_slots_from_events
 
 # Things to test in a custom action
 def test_action_hello_world(dispatcher, tracker, domain):
