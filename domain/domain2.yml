@@ -13,3 +13,9 @@ intents:
     use_entities: true
 - bot_challenge:
     use_entities: true
+entities: []
+slots: {}
+responses: {}
+actions: []
+forms: {}
+e2e_actions: []
