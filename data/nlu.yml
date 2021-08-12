@@ -3,7 +3,6 @@ nlu:
 - intent: greet
   examples: |
     - hey
-    - hello
     - hi
     - hello there
     - good morning
@@ -15,6 +14,9 @@ nlu:
     - goodmorning
     - goodevening
     - good afternoon
+- intent: 777_ttyb_new_intent
+  examples: |
+    - hello
 - intent: goodbye
   examples: |
     - good afternoon
@@ -94,3 +96,6 @@ nlu:
 - intent: pay_money_interactive_learning
   examples: |
     - I want to transfer money
+- intent: 777_new_intent_nlu_inbox
+  examples: |
+    - sasd

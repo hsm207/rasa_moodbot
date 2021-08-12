@@ -5,6 +5,10 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
+- 777_ttyb_new_intent:
+    use_entities: true
+- 777_new_intent_nlu_inbox:
+    use_entities: true
 - greet:
     use_entities: true
 - goodbye:
@@ -16,6 +20,8 @@ intents:
 - intent_from_nlu_data_ui:
     use_entities: true
 - pay_money_interactive_learning:
+    use_entities: true
+- 777_add_intent_directly_domain1:
     use_entities: true
 entities: []
 slots: {}
@@ -37,7 +43,12 @@ responses:
   - text: hello from the ui
   utter_pay_who_interactive_learning:
   - text: Who do you want to pay to?
+  utter_777_ttyb_response:
+  - text: what do you want?
+  utter_777_response_ui:
+  - text: this is response is created from responses UI
 actions:
 - utter_pay_who_interactive_learning
+- utter_777_ttyb_response
 forms: {}
 e2e_actions: []
