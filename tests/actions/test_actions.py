@@ -3,6 +3,8 @@ from rasa_sdk.events import SlotSet
 from typing import Any, Text, Dict, List, Set
 import pytest
 
+from tests.test_utils import *
+
 # Things to test in a custom action
 def test_action_hello_world(dispatcher, tracker, domain):
     action = actions.ActionHelloWorld()
@@ -42,14 +44,6 @@ def test_action_many_events_ugly(dispatcher, tracker, domain):
     assert name == "John"
 
 
-def extract_slots_from_events(events):
-    return [e for e in events if e["event"] == "slot"]
-
-def is_same_slots(slotsA, slotsB):
-    f = lambda x: x["name"]
-    slot_pairs = zip(sorted(slotsA, key=f), sorted(slotsB, key=f))
-    return all(s1 == s2 for s1, s2 in slot_pairs)
-
 def test_action_many_events_clean(dispatcher, tracker, domain):
     action = actions.ActionManyEvents()
     actual_events = action.run(dispatcher, tracker, domain)
@@ -59,6 +53,7 @@ def test_action_many_events_clean(dispatcher, tracker, domain):
 
     assert is_same_slots(actual_slots, expected_slots)
 
+
 # use parameterised tests to test different outcome
 def test_successul_login(dispatcher, tracker, domain):
     tracker.slots["name"] = "John"
@@ -67,6 +62,7 @@ def test_successul_login(dispatcher, tracker, domain):
     actual_events = action.run(dispatcher, tracker, domain)
     assert actual_events[0] == SlotSet("is_logged_in", True)
 
+
 def test_unsuccessul_login(dispatcher, tracker, domain):
     tracker.slots["name"] = "Doe"
     action = actions.ActionAuthrorizeUser()
@@ -74,10 +70,11 @@ def test_unsuccessul_login(dispatcher, tracker, domain):
     actual_events = action.run(dispatcher, tracker, domain)
     assert actual_events[0] == SlotSet("is_logged_in", False)
 
-@pytest.mark.parametrize("test_input, expected_event", [
-    ("John", SlotSet("is_logged_in", True)),
-    ("Doe", SlotSet("is_logged_in", False))
-])
+
+@pytest.mark.parametrize(
+    "test_input, expected_event",
+    [("John", SlotSet("is_logged_in", True)), ("Doe", SlotSet("is_logged_in", False))],
+)
 def test_authrorize_user(test_input, expected_event, dispatcher, tracker, domain):
     tracker.slots["name"] = test_input
     action = actions.ActionAuthrorizeUser()
@@ -85,14 +82,12 @@ def test_authrorize_user(test_input, expected_event, dispatcher, tracker, domain
     actual_events = action.run(dispatcher, tracker, domain)
     assert actual_events[0] == expected_event
 
+
 # using monkeypatch
 def test_agent_unavailable(monkeypatch, dispatcher, tracker, domain):
     action = actions.ActionAgentAvailable()
 
     monkeypatch.setattr(action, "_is_agent_available", lambda: False)
-    
+
     actual_events = action.run(dispatcher, tracker, domain)
     assert actual_events[0] == SlotSet("is_agent_available", False)
-    
-
-
