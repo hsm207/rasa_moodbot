@@ -11,6 +11,12 @@ intents:
     use_entities: true
 - affirm:
     use_entities: true
+- intent_direct_on_yaml_editor:
+    use_entities: true
+- intent_from_nlu_data_ui:
+    use_entities: true
+- pay_money_interactive_learning:
+    use_entities: true
 entities: []
 slots: {}
 responses:
@@ -27,6 +33,11 @@ responses:
   - text: Bye
   utter_iamabot:
   - text: I am a bot, powered by Rasa.
-actions: []
+  utter_response_from_ui:
+  - text: hello from the ui
+  utter_pay_who_interactive_learning:
+  - text: Who do you want to pay to?
+actions:
+- utter_pay_who_interactive_learning
 forms: {}
 e2e_actions: []

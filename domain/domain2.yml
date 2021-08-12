@@ -13,3 +13,11 @@ intents:
     use_entities: true
 - bot_challenge:
     use_entities: true
+- direct_modify_intent_in_domain_yml_2_in_yaml_editor:
+    use_entities: true
+entities: []
+slots: {}
+responses: {}
+actions: []
+forms: {}
+e2e_actions: []

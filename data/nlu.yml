@@ -85,3 +85,12 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+- intent: intent_direct_on_yaml_editor
+  examples: |
+    - fooo
+- intent: intent_from_nlu_data_ui
+  examples: |
+    - bar
+- intent: pay_money_interactive_learning
+  examples: |
+    - I want to transfer money

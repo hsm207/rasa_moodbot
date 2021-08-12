@@ -1,14 +1,11 @@
 version: "2.0"
-
 stories:
-
 - story: happy path
   steps:
   - intent: greet
   - action: utter_greet
   - intent: mood_great
   - action: utter_happy
-
 - story: sad path 1
   steps:
   - intent: greet
@@ -18,7 +15,6 @@ stories:
   - action: utter_did_that_help
   - intent: affirm
   - action: utter_happy
-
 - story: sad path 2
   steps:
   - intent: greet
@@ -28,3 +24,12 @@ stories:
   - action: utter_did_that_help
   - intent: deny
   - action: utter_goodbye
+- story: Story from Conversation ID f230cd47e92b4c6faa8064c58d0fd6c2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: pay_money_interactive_learning
+  - action: utter_pay_who_interactive_learning
