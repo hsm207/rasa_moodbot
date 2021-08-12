@@ -15,6 +15,8 @@ intents:
     use_entities: true
 - direct_modify_intent_in_domain_yml_2_in_yaml_editor:
     use_entities: true
+- 777_add_intent_yaml_enditor_domain2:
+    use_entities: true
 entities: []
 slots: {}
 responses: {}

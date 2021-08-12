@@ -33,3 +33,7 @@ stories:
   - action: utter_did_that_help
   - intent: pay_money_interactive_learning
   - action: utter_pay_who_interactive_learning
+- story: Story from Conversation ID bde2d67f14334ca2b6937d9dff5119ba
+  steps:
+  - intent: 777_ttyb_new_intent
+  - action: utter_777_ttyb_response
