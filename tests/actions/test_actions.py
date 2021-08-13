@@ -55,7 +55,7 @@ def test_action_many_events_clean(dispatcher, tracker, domain):
 
 
 # use parameterised tests to test different outcome
-def test_successul_login(dispatcher, tracker, domain):
+def test_successful_login(dispatcher, tracker, domain):
     tracker.slots["name"] = "John"
     action = actions.ActionAuthrorizeUser()
 
@@ -63,7 +63,7 @@ def test_successul_login(dispatcher, tracker, domain):
     assert actual_events[0] == SlotSet("is_logged_in", True)
 
 
-def test_unsuccessul_login(dispatcher, tracker, domain):
+def test_unsuccessful_login(dispatcher, tracker, domain):
     tracker.slots["name"] = "Doe"
     action = actions.ActionAuthrorizeUser()
 
