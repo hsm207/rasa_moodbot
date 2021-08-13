@@ -75,7 +75,7 @@ def test_unsuccessul_login(dispatcher, tracker, domain):
     "test_input, expected_event",
     [("John", SlotSet("is_logged_in", True)), ("Doe", SlotSet("is_logged_in", False))],
 )
-def test_authrorize_user(test_input, expected_event, dispatcher, tracker, domain):
+def test_authorize_user(test_input, expected_event, dispatcher, tracker, domain):
     tracker.slots["name"] = test_input
     action = actions.ActionAuthrorizeUser()
 
