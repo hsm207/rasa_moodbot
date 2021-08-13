@@ -20,7 +20,7 @@ def domain() -> DomainDict:
 
 
 @pytest.fixture
-def tracker(tmpdir) -> Tracker:
+def tracker() -> Tracker:
     """Create a tracker with a common start state"""
     initial_tracker = """
     {
@@ -69,10 +69,5 @@ def tracker(tmpdir) -> Tracker:
 }   
     """
 
-    path = tmpdir.join("initial_tracker.json")
-    path.write(initial_tracker)
-
-    with open(path) as json_file:
-        tracker = Tracker.from_dict(json.load(json_file))
-
+    tracker = Tracker.from_dict(json.loads(initial_tracker))
     return tracker
