@@ -37,7 +37,7 @@
                 "shell"
             ],
             "environment": {
-                "DEFAULT_STREAM_READING_TIMEOUT_IN_SECONDS": 3600
+                "RASA_SHELL_STREAM_READING_TIMEOUT_IN_SECONDS": 3600
             }
            
         },
@@ -52,7 +52,7 @@
                 "run", "-vv", "--enable-api"
             ],
             "environment": {
-                "DEFAULT_STREAM_READING_TIMEOUT_IN_SECONDS": 3600
+                "RASA_SHELL_STREAM_READING_TIMEOUT_IN_SECONDS": 3600
             }
            
         },
@@ -67,7 +67,7 @@
                 "run", "actions", "-vv"
             ],
             "environment": {
-                "DEFAULT_STREAM_READING_TIMEOUT_IN_SECONDS": 3600
+                "RASA_SHELL_STREAM_READING_TIMEOUT_IN_SECONDS": 3600
             }
            
         }
