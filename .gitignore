@@ -4,3 +4,5 @@ __pycache__
 .keras
 events.db*
 rasa.db
+.DS_Store
+results
