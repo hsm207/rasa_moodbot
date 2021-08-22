@@ -29,19 +29,19 @@ But the same training set on the regular memoization policy won't work!
 
 ```bash
 rasa train core -c config_memo.yml -s data/stories_with_solution.yml && \
-    rasa test core -s tests --fail-on-prediction-errors -vv
+    rasa test core -s tests --fail-on-prediction-errors
 ```
 
 To emphasise that the solution story must be written in a certain way:
 
 ```bash
 rasa train core -c config_augmemo.yml -s data/stories_with_not_solution.yml && \
-    rasa test core -s tests --fail-on-prediction-errors -vv
+    rasa test core -s tests --fail-on-prediction-errors
 ```
 
 Test with regular memoization just for fun:
 
 ```bash
 rasa train core -c config_memo.yml -s data/stories_with_not_solution.yml && \
-    rasa test core -s tests --fail-on-prediction-errors -vv
+    rasa test core -s tests --fail-on-prediction-errors
 ```
