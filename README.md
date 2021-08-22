@@ -1,6 +1,6 @@
 # Introduction
 
-This repo explains how AugmentedMemoization policy works based on this Medium blog post.
+This repo explains how AugmentedMemoization policy works based on [this](https://pub.towardsai.net/an-illustrated-explanation-of-how-rasas-augmentedmemoization-policy-works-da436aa20cff) Medium blog post.
 
 # Usage
 
