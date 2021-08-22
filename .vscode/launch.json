@@ -1,0 +1,34 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "rasa train",
+            "type": "python",
+            "request": "launch",
+            "module": "rasa",
+            "args": ["train", "--force", "core", "-vv"],
+            "justMyCode": false
+        },
+
+        {
+            "name": "rasa test (sanity check)",
+            "type": "python",
+            "request": "launch",
+            "module": "rasa",
+            "args": ["test", "core", "-s", "data", "-vv"],
+            "justMyCode": false
+        },
+
+        {
+            "name": "rasa test (oos)",
+            "type": "python",
+            "request": "launch",
+            "module": "rasa",
+            "args": ["test", "core", "-s", "tests", "-vv", "--fail-on-prediction-errors"],
+            "justMyCode": false
+        }
+    ]
+}
