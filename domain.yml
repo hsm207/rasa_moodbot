@@ -19,8 +19,16 @@ intents:
     use_entities: true
 - bot_challenge:
     use_entities: true
-entities: []
-slots: {}
+entities:
+  - mood
+slots:
+  risk_level:
+    type: categorical
+    values:
+      - low
+      - medium
+      - high
+    initial_value: null
 responses:
   utter_greet:
   - text: Hey! How are you?
