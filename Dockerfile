@@ -5,4 +5,5 @@ RUN apt update && \
     apt install -y git \
         wget
 
-RUN pip install black
+RUN pip install black \
+    ipykernel
