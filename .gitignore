@@ -9,3 +9,4 @@ results
 tensorboard
 .bash_history
 .DS_Store
+.cache
