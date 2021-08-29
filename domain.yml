@@ -26,7 +26,7 @@ responses:
   - text: Hi! Apa khabar?
   utter_cheer_up:
   - image: https://i.imgur.com/nGF1K8f.jpg
-    text: 'Lihat ini untuk menggemberikan anda:'
+    text: 'Lihat ini untuk menggembirakan anda:'
   utter_did_that_help:
   - text: Adakah itu membantu anda?
   utter_happy:
