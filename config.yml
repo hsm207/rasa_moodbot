@@ -14,6 +14,9 @@ pipeline:
     analyzer: char_wb
     min_ngram: 1
     max_ngram: 4
+  - name: addons.custom_lm_featurizer.CustomLanguageModelFeaturizer
+    model_name: "StevenLimcorn/MelayuBERT"
+    model_weights: ".cache"
   - name: DIETClassifier
     epochs: 100
     constrain_similarities: true
