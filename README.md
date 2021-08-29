@@ -12,7 +12,8 @@ Details about this approach is explained in this [blog post]().
 
 # Usage
 
-1. Run `rasa train`
-2. Run `make run-bot`
-3. Preview the [bot_ui.html](bot_ui.html) file
-4. Chat with the bot
+1. Run `bash download_model.sh`
+2. Run `rasa train`
+3. Run `make run-bot`
+4. Preview the [bot_ui.html](bot_ui.html) file
+5. Chat with the bot
