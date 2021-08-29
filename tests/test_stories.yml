@@ -5,22 +5,22 @@ stories:
 - story: happy path 1
   steps:
   - user: |
-      hello there!
+      hello!
     intent: greet
   - action: utter_greet
   - user: |
-      amazing
+      sangat gembira!
     intent: mood_great
   - action: utter_happy
 
 - story: happy path 2
   steps:
   - user: |
-      hello there!
+      hi
     intent: greet
   - action: utter_greet
   - user: |
-      amazing
+      gembira
     intent: mood_great
   - action: utter_happy
   - user: |
@@ -35,12 +35,12 @@ stories:
     intent: greet
   - action: utter_greet
   - user: |
-      not good
+      tak bagus
     intent: mood_unhappy
   - action: utter_cheer_up
   - action: utter_did_that_help
   - user: |
-      yes
+      ya
     intent: affirm
   - action: utter_happy
 
@@ -51,12 +51,12 @@ stories:
     intent: greet
   - action: utter_greet
   - user: |
-      not good
+      sangat kecewa
     intent: mood_unhappy
   - action: utter_cheer_up
   - action: utter_did_that_help
   - user: |
-      not really
+      tidak
     intent: deny
   - action: utter_goodbye
 
@@ -67,12 +67,12 @@ stories:
     intent: greet
   - action: utter_greet
   - user: |
-      very terrible
+      saya rasa kecewa
     intent: mood_unhappy
   - action: utter_cheer_up
   - action: utter_did_that_help
   - user: |
-      no
+      tak
     intent: deny
   - action: utter_goodbye
 
@@ -86,6 +86,6 @@ stories:
 - story: bot challenge
   steps:
   - user: |
-      are you a bot?
+      awak nie manusia atau robot?
     intent: bot_challenge
   - action: utter_iamabot

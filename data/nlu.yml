@@ -2,86 +2,68 @@ version: "2.0"
 nlu:
 - intent: greet
   examples: |
-    - hey
-    - hello
+    - woi
+    - hai
     - hi
-    - hello there
-    - good morning
-    - good evening
-    - moin
-    - hey there
-    - let's go
+    - salam
+    - selamat pagi
+    - selamat petang
+    - salam sejahtera
+    - jom
     - hey dude
-    - goodmorning
-    - goodevening
-    - good afternoon
+    - pagi
+    - petang
+    - selamat tengah hari
 - intent: goodbye
   examples: |
-    - good afternoon
-    - cu
-    - good by
-    - cee you later
-    - good night
+    - cau
+    - babai
+    - selamat malam
     - bye
-    - goodbye
-    - have a nice day
-    - see you around
     - bye bye
-    - see you later
+    - jumpa lagi
 - intent: affirm
   examples: |
-    - yes
-    - y
-    - indeed
-    - of course
-    - that sounds good
-    - correct
-    - ja
+    - ya
+    - betul
+    - ok
+    - ok jer
+    - boleh
 - intent: deny
   examples: |
-    - no
-    - n
-    - never
-    - I don't think so
-    - don't like that
-    - no way
-    - not really
-    - nein
+    - tidak
+    - tak nak
+    - salah
+    - tak setuju
+    - salah tu
 - intent: mood_great
   examples: |
-    - perfect
-    - great
-    - amazing
-    - feeling like a king
-    - wonderful
-    - I am feeling very good
-    - I am great
-    - I am amazing
-    - I am going to save the world
-    - super stoked
-    - extremely good
-    - so so perfect
-    - so good
-    - so perfect
+    - best
+    - bagus
+    - hebat
+    - mantap
+    - saya berasa gembira
+    - saya sangat gembira
+    - sangat bagus
+    - best giler
 - intent: mood_unhappy
   examples: |
-    - my day was horrible
-    - I am sad
-    - I don't feel very well
-    - I am disappointed
-    - super sad
+    - saya sangat sedih
+    - saya rasa kurang sihat
+    - saya kecewa
+    - sangat sedih
     - I'm so sad
-    - sad
-    - very sad
-    - unhappy
-    - not good
-    - not very good
-    - extremly sad
-    - so saad
-    - so sad
+    - sedih
+    - jiwang
+    - tidak gembira
+    - tak bagus
+    - kurang bagus
+    - sangat sangat kecewa
+    - sangat hampa
+    - sange pilu
 - intent: bot_challenge
   examples: |
-    - are you a bot?
-    - are you a human?
-    - am I talking to a bot?
-    - am I talking to a human?
+    - awak robot about manusia?
+    - adakah awak manusia?
+    - saper awak?
+    - awak nie siapa?
