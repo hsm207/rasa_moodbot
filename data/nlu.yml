@@ -17,7 +17,6 @@ nlu:
     - good afternoon
 - intent: goodbye
   examples: |
-    - good afternoon
     - cu
     - good by
     - cee you later
