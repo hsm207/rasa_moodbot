@@ -14,14 +14,5 @@
             "args": ["nlg:app", "--reload", "--host", "localhost", "--port", "8000"]
         },
 
-        {
-            "name": "Start rasa server",
-            "type": "python",
-            "request": "launch",
-            "module": "rasa",
-            "args": ["run", "-vv", "--enable-api"]
-        }
-
-        
     ]
 }
