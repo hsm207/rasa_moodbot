@@ -11,4 +11,4 @@ RUN pip install black \
     uvicorn[standard] \
     ipywidgets \
     jupyterlab \
-    transformers==4.10.0
+    transformers[torch]==4.10.0
