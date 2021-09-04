@@ -40,3 +40,6 @@
 #  username: username
 #  password: password
 #  queue: queue
+
+nlg:
+  url: http://localhost:8000/nlg
