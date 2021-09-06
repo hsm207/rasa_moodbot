@@ -16,6 +16,23 @@ GET http://XXX.XXX.XXX.XXX/api/conversations/CONVERSATION_ID
 content-type: application/json
 Authorization: Bearer AUTHORIZATION_TOKEN
 
+###
 
+# get a list of conversations
+# see: https://rasa.com/docs/rasa-x/pages/http-api#operation/getConversations
 
+GET http://XXX.XXX.XXX.XXX/api/conversations?input_channels=rest
+content-type: application/json
+Authorization: Bearer AUTHORIZATION_TOKEN
+
+###
+
+# post a message in the rest channel
+POST http://XXX.XXX.XXX.XXX/webhooks/rest/webhook
+Content-Type: application/json
+
+{
+    "sender": "rest_user",
+    "message": "I want to transfer money"
+}
 
