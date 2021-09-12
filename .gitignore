@@ -10,3 +10,4 @@ tensorboard
 .bash_history
 .DS_Store
 haystack
+.ipynb_checkpoints
