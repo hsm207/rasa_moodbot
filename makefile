@@ -12,3 +12,13 @@ build-haystack:
 		awk '{sub(/image: \"deepset\/elasticsearch-game-of-thrones\"/,"#image: \"deepset/elasticsearch-game-of-thrones\"")}1' docker-compose.yml.bk > docker-compose.yml && \
 		rm docker-compose.yml.bk && \
 		docker-compose build
+
+build-solution:
+	docker-compose -p faq build && \
+		docker-compose -p faq up
+
+run-bot:
+	docker-compose -p faq exec rasa-server rasa run \
+		--enable-api \
+		-vv \
+		--cors "*"
