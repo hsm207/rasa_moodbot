@@ -11,3 +11,4 @@ tensorboard
 .DS_Store
 haystack
 .ipynb_checkpoints
+.vscode-server
