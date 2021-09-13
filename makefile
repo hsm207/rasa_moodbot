@@ -22,3 +22,6 @@ run-bot:
 		--enable-api \
 		-vv \
 		--cors "*"
+
+train-bot:
+	docker-compose -p faq exec rasa-server rasa train
