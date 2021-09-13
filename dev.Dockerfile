@@ -9,4 +9,5 @@ RUN pip install --no-cache-dir black \
     farm-haystack==0.9.0 \
     debugpy \
     jupyterlab \
-    pytest
+    pytest \
+    wikipedia
