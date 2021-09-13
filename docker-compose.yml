@@ -26,6 +26,8 @@ services:
       - EVAL_FILE=eval_labels_example.csv
   rasa-server:
     image: rasa/rasa:2.8.5-full
+    ports: 
+      - 5005:5005
     volumes:
       - .:/app
     entrypoint: sh
