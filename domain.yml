@@ -35,6 +35,10 @@ responses:
   - text: Bye
   utter_iamabot:
   - text: I am a bot, powered by Rasa.
-actions: []
+  utter_default:
+  - text: "I'm sorry, I can't help you. You've reached the ultimate fallback action"
+actions:
+  - action_default_ask_affirmation # this asks the user to confirm if they meant intent x
+  - action_default_ask_rephrase # if the user denies i.e /out_of_scope, then this will ask the user to rephrase what they meant
 forms: {}
 e2e_actions: []
