@@ -5,6 +5,7 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
+- ask_question
 - greet:
     use_entities: true
 - goodbye:
@@ -35,6 +36,7 @@ responses:
   - text: Bye
   utter_iamabot:
   - text: I am a bot, powered by Rasa.
-actions: []
+actions:
+  - action_answer_question
 forms: {}
 e2e_actions: []

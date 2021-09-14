@@ -12,3 +12,7 @@ rules:
   steps:
   - intent: greet
   - action: utter_greet
+- rule: Answer questions about osteopathy
+  steps:
+  - intent: ask_question
+  - action: action_answer_question

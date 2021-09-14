@@ -85,3 +85,11 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+- intent: ask_question
+  examples: |
+    - what is osteopathy?
+    - is osteopathy effective?
+    - who created osteopathy?
+    - how does osteopathy work?
+    - is osteopathy legal?
+    - which organization regulates osteopathy?
