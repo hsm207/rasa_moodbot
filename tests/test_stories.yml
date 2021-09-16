@@ -89,3 +89,31 @@ stories:
       are you a bot?
     intent: bot_challenge
   - action: utter_iamabot
+
+- story: two moods
+  steps:
+  - user: |
+      I am [great](happy) and [sad](sad)
+    intent: mood_unhappy
+  - action: utter_two_mood
+
+- story: one mood - happy
+  steps:
+  - user: |
+      I am [great](happy)
+    intent: mood_unhappy
+  - action: utter_one_mood
+
+- story: one mood - sad
+  steps:
+  - user: |
+      I am [sad](sad)
+    intent: mood_unhappy
+  - action: utter_one_mood
+
+- story: this story will fail because or entities only work on mood_unhappy intent
+  steps:
+  - user: |
+      I am [sad](sad)
+    intent: mood_happy
+  - action: utter_one_mood
