@@ -28,3 +28,22 @@ stories:
   - action: utter_did_that_help
   - intent: deny
   - action: utter_goodbye
+
+- story: two moods
+  steps:
+  - intent: mood_unhappy
+    entities:
+      - happy
+      - sad
+  - action: utter_two_mood
+
+- story: one mood - happy
+  steps:
+  - or:
+    - intent: mood_unhappy
+      entities:
+        - happy
+    - intent: mood_unhappy
+      entities:
+        - sad
+  - action: utter_one_mood

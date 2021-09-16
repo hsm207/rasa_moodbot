@@ -19,8 +19,14 @@ intents:
     use_entities: true
 - bot_challenge:
     use_entities: true
-entities: []
-slots: {}
+entities:
+  - happy
+  - sad
+slots:
+  happy:
+    type: text
+  sad:
+    type: text
 responses:
   utter_greet:
   - text: Hey! How are you?
@@ -35,6 +41,10 @@ responses:
   - text: Bye
   utter_iamabot:
   - text: I am a bot, powered by Rasa.
+  utter_one_mood:
+  - text: you are {happy} or {sad}
+  utter_two_mood:
+  - text: you can't be both {happy} and {sad}!
 actions: []
 forms: {}
 e2e_actions: []
