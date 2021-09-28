@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  rasa:
+    image: rasa/rasa:latest-full
+    entrypoint: /bin/bash -c 'sleep 3600'
+    user: root
+    volumes:
+      - .:/app
+  
+  duckling:
+    image: rasa/duckling:latest
+
+  
+

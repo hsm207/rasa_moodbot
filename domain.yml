@@ -19,7 +19,8 @@ intents:
     use_entities: true
 - bot_challenge:
     use_entities: true
-entities: []
+entities:
+  - time
 slots: {}
 responses:
   utter_greet:
