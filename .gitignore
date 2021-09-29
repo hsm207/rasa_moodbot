@@ -9,3 +9,5 @@ results
 tensorboard
 .bash_history
 .DS_Store
+.vscode-server
+requirements.txt
