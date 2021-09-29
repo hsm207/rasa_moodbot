@@ -1,6 +1,10 @@
 version: "2.0"
 
 nlu:
+- intent: inform
+  examples: |
+    - [Germany](country)
+    - [Argentina](country)
 - intent: greet
   examples: |
     - hey
