@@ -11,3 +11,23 @@ rules:
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
+
+- rule: Ask the user where they are from
+  condition:
+  - slot_was_set:
+    - country: null
+  steps:
+  - intent: greet
+  - action: country_form
+  - active_loop: country_form
+
+- rule: Tell user the bot loves their country
+  condition:
+  - active_loop: restaurant_form
+  steps:
+  - action: country_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+    - country
+  - action: utter_love_country

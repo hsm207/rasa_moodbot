@@ -10,7 +10,26 @@ intents:
   - bot_challenge
   - inform
 
+entities:
+  - country
+
+slots:
+  country:
+    type: text
+
+forms:
+  country_form:
+    required_slots:
+      country:
+        - type: from_entity
+          entity: country
+
 responses:
+  utter_ask_country:
+  - text: Hey! Where are you from?
+
+  utter_love_country:
+  - text: "{country} is a beautiful country!"
   utter_greet:
   - text: "Hey! How are you?"
 
