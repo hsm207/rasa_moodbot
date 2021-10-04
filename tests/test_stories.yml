@@ -2,6 +2,8 @@
 #### If you want to learn more, please see the docs: https://rasa.com/docs/rasa/testing-your-assistant
 
 stories:
+  # this test story will fail because of this issue:
+  # https://github.com/RasaHQ/rasa/issues/9771
   - story: identical to training NLU example
     steps:
     - user: |
@@ -16,30 +18,30 @@ stories:
     - active_loop: null
     - action: utter_love_country
 
-  # - story: Single word, outside NLU example
-  #   steps:
-  #   - user: |
-  #       hi
-  #     intent: greet
-  #   - action: country_form
-  #   - active_loop: country_form
-  #   - user: |
-  #       [Zimbabwe](country)
-  #     intent: inform # <- wrong intent will be predicted but its fine
-  #   - action: country_form
-  #   - active_loop: null
-  #   - action: utter_love_country
+  - story: Single word, outside NLU example
+    steps:
+    - user: |
+        hi
+      intent: greet
+    - action: country_form
+    - active_loop: country_form
+    - user: |
+        [Zimbabwe](country)
+      intent: nlu_fallback
+    - action: country_form
+    - active_loop: null
+    - action: utter_love_country
 
-  # - story: Many words, outside NLU example
-  #   steps:
-  #   - user: |
-  #       hi
-  #     intent: greet
-  #   - action: country_form
-  #   - active_loop: country_form
-  #   - user: |
-  #       I am from [Zimbabwe](country)
-  #     intent: inform # <- wrong intent will be predicted but its fine
-  #   - action: country_form
-  #   - active_loop: null
-  #   - action: utter_love_country
+  - story: Many words, outside NLU example
+    steps:
+    - user: |
+        hi
+      intent: greet
+    - action: country_form
+    - active_loop: country_form
+    - user: |
+        I am from [Zimbabwe](country)
+      intent: nlu_fallback
+    - action: country_form
+    - active_loop: null
+    - action: utter_love_country
