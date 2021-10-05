@@ -1,0 +1,22 @@
+## notify the user using the callback channel
+POST http://localhost:5005/webhooks/callback/webhook
+content-type: application/json
+
+{
+    "sender": "test_user",
+    "message": "/TRIGGER_low_temperature_warning"
+}
+
+###
+## talking to the bot using the rest channel
+POST http://localhost:5005/webhooks/rest/webhook
+content-type: application/json
+
+{
+    "sender": "test_user",
+    "message": "yes!"
+}
+
+###
+## extracting the events from a conversation
+GET http://localhost:5005/conversations/test_user/tracker
