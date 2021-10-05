@@ -1,7 +1,10 @@
+val:
+	rasa data validate
+
 train:
 	rasa train
 
-run-bot: train
+run-bot: val train
 	rasa run \
 		--enable-api \
 		-vv \
