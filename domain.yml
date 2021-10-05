@@ -19,9 +19,16 @@ intents:
     use_entities: true
 - bot_challenge:
     use_entities: true
+- TRIGGER_low_temperature_warning
 entities: []
 slots: {}
 responses:
+  utter_low_temperature:
+  - text: The temperature is getting below 10 ºC, would you like to raise the temperature?
+  utter_not_raise_temperature:
+  - text: Okay. I will not raise the temperature
+  utter_raise_temperature:
+  - text: Okay. I will raise the temperature
   utter_greet:
   - text: Hey! How are you?
   utter_cheer_up:

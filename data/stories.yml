@@ -28,3 +28,15 @@ stories:
   - action: utter_did_that_help
   - intent: deny
   - action: utter_goodbye
+
+- story: user wants to raise temperature
+  steps:
+  - action: utter_low_temperature
+  - intent: affirm
+  - action: utter_raise_temperature
+
+- story: user does not want to raise temperature
+  steps:
+  - action: utter_low_temperature
+  - intent: deny
+  - action: utter_not_raise_temperature

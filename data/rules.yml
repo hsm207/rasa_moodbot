@@ -12,3 +12,7 @@ rules:
   steps:
   - intent: greet
   - action: utter_greet
+- rule: A rule to notify the user that the temperature is getting low
+  steps:
+  - intent: TRIGGER_low_temperature_warning
+  - action: utter_low_temperature

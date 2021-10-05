@@ -36,6 +36,7 @@ nlu:
     - that sounds good
     - correct
     - ja
+    - yes, I am freezing!
 - intent: deny
   examples: |
     - no
@@ -46,6 +47,7 @@ nlu:
     - no way
     - not really
     - nein
+    - no, the window is open as I'm getting a bit of fresh air
 - intent: mood_great
   examples: |
     - perfect
