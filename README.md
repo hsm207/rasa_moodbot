@@ -1,6 +1,10 @@
 # Introduction
 
-This repository shows a weird way build an analytics pipeline: create an endpoint to call retrieve events from a tracker store.
+This repository shows a weird way build an analytics pipeline to analyze the conversation events in the tracker store
+
+# Architecture
+
+An SQL tracker store is used to store conversation events and an endpoint is created to retrieve events it
 
 # Usage
 1. Run `make build`
