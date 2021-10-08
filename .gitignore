@@ -11,3 +11,4 @@ tensorboard
 .DS_Store
 .vscode-server
 requirements.txt
+.cache
