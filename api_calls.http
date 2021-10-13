@@ -47,6 +47,6 @@ Authorization: Bearer AUTHORIZATION_TOKEN
 ###
 
 # delete a specific tag id
-DELETE http://XXX.XXX.XXX.XXX/api/data_tags/1
+DELETE http://XXX.XXX.XXX.XXX/api/data_tags/<TAG_ID>
 content-type: application/json
 Authorization: Bearer AUTHORIZATION_TOKEN
