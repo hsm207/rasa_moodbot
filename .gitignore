@@ -3,7 +3,7 @@ __pycache__
 .config
 .keras
 events*
-*.db
+*.db*
 train_test_split
 results
 tensorboard
@@ -11,3 +11,4 @@ tensorboard
 .DS_Store
 .vscode-server
 requirements.txt
+.app
