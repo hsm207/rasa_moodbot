@@ -36,3 +36,17 @@ Content-Type: application/json
     "message": "I want to transfer money"
 }
 
+
+###
+
+# get all data tags, including the value of their id
+GET http://XXX.XXX.XXX.XXX/api/data_tags
+content-type: application/json
+Authorization: Bearer AUTHORIZATION_TOKEN
+
+###
+
+# delete a specific tag id
+DELETE http://XXX.XXX.XXX.XXX/api/data_tags/1
+content-type: application/json
+Authorization: Bearer AUTHORIZATION_TOKEN
