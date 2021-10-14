@@ -1,0 +1,23 @@
+version: '3.4'
+
+services:
+  rasa-server:
+    image: rasamoodbot
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    entrypoint: bash
+    volumes:
+      - .:/app
+    command: ["-c", "make run-bot"]
+    ports:
+      - "5005:5005"
+  
+  action-server:
+    image: rasa/rasa:latest-full
+    volumes:
+      - ./actions:/app/actions
+    command: ["run", "actions", "--auto-reload", "-vv"]
+  
+  duckling:
+    image: rasa/duckling:latest
