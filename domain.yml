@@ -21,8 +21,14 @@ intents:
     use_entities: true
 entities:
   - phone-number
-slots: {}
+slots:
+  phone_number:
+    type: text
 responses:
+  utter_ask_phone_number:
+  - text: "Enter your phone number with country code"
+  utter_tell_phone_number:
+  - text: "Your phone number is {phone_number}"
   utter_greet:
   - text: Hey! How are you?
   utter_cheer_up:
@@ -36,6 +42,10 @@ responses:
   - text: Bye
   utter_iamabot:
   - text: I am a bot, powered by Rasa.
-actions: []
-forms: {}
+actions:
+  - validate_phonenumber_form
+forms:
+  phonenumber_form:
+    required_slots: {}
+
 e2e_actions: []

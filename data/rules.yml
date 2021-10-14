@@ -8,7 +8,19 @@ rules:
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
-- rule: Untitled Rule
+  
+- rule: Ask phone_number
   steps:
   - intent: greet
-  - action: utter_greet
+  - action: phonenumber_form
+  - active_loop: phonenumber_form
+
+- rule: Say phone number
+  condition:
+  - active_loop: phonenumber_form
+  steps:
+  - action: phonenumber_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_tell_phone_number
