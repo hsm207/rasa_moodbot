@@ -12,3 +12,6 @@ tensorboard
 .vscode-server
 requirements.txt
 .app
+.cache
+.ssh
+.gitconfig
