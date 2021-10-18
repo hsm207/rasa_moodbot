@@ -44,7 +44,7 @@ responses:
   utter_iamabot:
   - text: I am a bot, powered by Rasa.
 actions:
-  - validate_phonenumber_form
+  - action_repeat_last_utterance
 forms:
   phonenumber_form:
     required_slots: {}

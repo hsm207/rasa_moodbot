@@ -32,50 +32,17 @@ class ActionHelloWorld(Action):
         return []
 
 
-class ValidatePhonenumberForm(FormValidationAction):
+class ActionRepeatLastUtterance(Action):
     def name(self) -> Text:
-        return "validate_phonenumber_form"
-
-    async def required_slots(
+        return "action_repeat_last_utterance"
+    def run(
         self,
-        slots_mapped_in_domain: List[Text],
-        dispatcher: "CollectingDispatcher",
-        tracker: "Tracker",
-        domain: "DomainDict",
-    ) -> Optional[List[Text]]:
-        required_slots = ["phone_number"]
-        return required_slots
-
-    def validate_phone_number(
-        self,
-        slot_value: Any,
         dispatcher: CollectingDispatcher,
         tracker: Tracker,
-        domain: DomainDict,
-    ) -> Dict[Text, Any]:
+        domain: Dict[Text, Any],
+    ) -> List[Dict[Text, Any]]:
 
-        if slot_value is None:
-            return {"phone_number": None}
+        dispatcher.utter_message(text="Hello World!")
 
-        if re.match(r"^\(\+\d{1,}\)", slot_value):
-            return {"phone_number": slot_value}
-        else:
-            dispatcher.utter_message(
-                "I said enter your phone number with country code!"
-            )
-            return {"phone_number": None}
-
-    async def extract_phone_number(
-        self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
-    ) -> Dict[Text, Any]:
-
-        duckling_phone = [
-            e.get("value")
-            for e in tracker.latest_message["entities"]
-            if e.get("entity") == "phone-number"
-        ]
-
-        if len(duckling_phone) == 0:
-            return {"phone_number": None}
-        else:
-            return {"phone_number": duckling_phone[0]}
+        return []
+    
