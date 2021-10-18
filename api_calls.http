@@ -50,3 +50,13 @@ Authorization: Bearer AUTHORIZATION_TOKEN
 DELETE http://XXX.XXX.XXX.XXX/api/data_tags/<TAG_ID>
 content-type: application/json
 Authorization: Bearer AUTHORIZATION_TOKEN
+
+###
+
+# the logs endpoint
+# project id is "default"
+POST http://XXX.XXX.XXX.XXX/api/projects/<PROJECT_ID>/logs
+Content-Type: application/json
+Authorization: Bearer AUTHORIZATION_TOKEN
+
+ "I am sad"
