@@ -8,10 +8,10 @@
 # This is a simple example for a custom action which utters "Hello World!"
 
 import logging
-import re
-from typing import Any, Dict, List, Optional, Text
+from typing import Any, Dict, List, Text
 
-from rasa_sdk import Action, FormValidationAction, Tracker
+from rasa_sdk import Action, Tracker
+from rasa_sdk.events import UserUtteranceReverted
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
 
@@ -35,6 +35,7 @@ class ActionHelloWorld(Action):
 class ActionRepeatLastUtterance(Action):
     def name(self) -> Text:
         return "action_repeat_last_utterance"
+
     def run(
         self,
         dispatcher: CollectingDispatcher,
@@ -42,7 +43,8 @@ class ActionRepeatLastUtterance(Action):
         domain: Dict[Text, Any],
     ) -> List[Dict[Text, Any]]:
 
-        dispatcher.utter_message(text="Hello World!")
+        bot_events = [e for e in tracker.events if e["event"] == "bot"]
+        last_bot_event = next(reversed(bot_events))
+        dispatcher.utter_message(text=last_bot_event["text"])
 
-        return []
-    
+        return [UserUtteranceReverted()]
