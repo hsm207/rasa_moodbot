@@ -9,18 +9,7 @@ rules:
   - intent: bot_challenge
   - action: utter_iamabot
   
-- rule: Ask phone_number
+- rule: Repeat last bot utterance when asked
   steps:
-  - intent: greet
-  - action: phonenumber_form
-  - active_loop: phonenumber_form
-
-- rule: Say phone number
-  condition:
-  - active_loop: phonenumber_form
-  steps:
-  - action: phonenumber_form
-  - active_loop: null
-  - slot_was_set:
-    - requested_slot: null
-  - action: utter_tell_phone_number
+  - intent: repeat_bot_utterance
+  - action: action_repeat_last_utterance
