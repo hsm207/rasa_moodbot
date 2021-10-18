@@ -20,11 +20,8 @@ intents:
     use_entities: true
 - bot_challenge:
     use_entities: true
-entities:
-  - phone-number
-slots:
-  phone_number:
-    type: text
+entities: []
+slots: {}
 responses:
   utter_ask_phone_number:
   - text: "Enter your phone number with country code"
