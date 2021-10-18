@@ -1,8 +1,8 @@
 # Introduction
-This repository shows how to implement a form that uses custom code to extract and validate a slot.
+This repository shows how to build a custom action to repeat the bot's last utterance.
 
 # Usage
 1. Run `docker-compose up`
-2. Talk to the bot using [bot_ui.html](bot_ui.html)
+2. Talk to the bot using [bot_ui.html](ui/bot_ui.html)
 
 # Demo
