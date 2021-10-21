@@ -1,12 +1,16 @@
 # Introduction
 
-This repo shows how you can use rasa to create a bot that will proactively notify a user about an event e.g. the temperature is to high and allow the user to converse with the bot using that notification as a starting point.
+This repo shows a bug to when calling the callback endpoint
 
-# Usage
-1. Open in a container in VS Code
+# Steps
+1. Open this project in a container in VS Code
 2. Run `make run-bot`
-3. Use the [restcalls](restcalls.http) script to simulate a conversation
-
+3. Execute:
+```bash
+curl -X POST \
+     -H "Content-Type: application/json" \
+     -d '{"sender":"test_user", "message":"/greet"}' \
+     http://localhost:5005/webhooks/callback/webhook
+```
 # References
-1. [Reminderbot](https://github.com/RasaHQ/rasa/tree/main/examples/reminderbot)
-2. [External Events](https://rasa.com/docs/rasa/reaching-out-to-user/#external-events)
+1. [Bug report](https://github.com/RasaHQ/rasa/issues/9951)
