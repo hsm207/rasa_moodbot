@@ -1,0 +1,8 @@
+## trigger an action
+POST http://localhost:5006/webhooks/rest/webhook
+content-type: application/json
+
+{
+    "sender": "test_user",
+    "message": "/trigger_sleep_sync{\"sleep_time\":30}"
+}
