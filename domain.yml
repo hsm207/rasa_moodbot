@@ -5,6 +5,8 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
+- trigger_sleep_sync
+- trigger_sleep_async
 - greet:
     use_entities: true
 - goodbye:
@@ -19,8 +21,11 @@ intents:
     use_entities: true
 - bot_challenge:
     use_entities: true
-entities: []
-slots: {}
+entities:
+  - sleep_time
+slots:
+  sleep_time:
+    type: any
 responses:
   utter_greet:
   - text: Hey! How are you?
@@ -35,6 +40,8 @@ responses:
   - text: Bye
   utter_iamabot:
   - text: I am a bot, powered by Rasa.
-actions: []
+actions:
+  - action_sleep_sync
+  - action_sleep_async
 forms: {}
 e2e_actions: []

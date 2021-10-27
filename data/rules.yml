@@ -1,5 +1,13 @@
 version: "2.0"
 rules:
+- rule: Call sleep action (sync)
+  steps:
+  - intent: trigger_sleep_sync
+  - action: action_sleep_sync
+- rule: Call sleep action (async)
+  steps:
+  - intent: trigger_sleep_async
+  - action: action_sleep_async
 - rule: Say goodbye anytime the user says goodbye
   steps:
   - intent: goodbye
