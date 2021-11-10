@@ -13,7 +13,7 @@ make check-bug
 ![image](https://user-images.githubusercontent.com/2398765/141085389-c86fea0b-f8b4-4195-bd7a-7469961a72f5.png)
 
 
-The bug does not exist if only one domain file is used:
+Things work as expected if only one domain file is used:
 
 ```bash
 make check-notbug
@@ -21,7 +21,7 @@ make check-notbug
 ![image](https://user-images.githubusercontent.com/2398765/141085469-a6f27295-45e3-4bda-8d0a-34fd1bf4d875.png)
 
 
-The workaround is to repeat the list of entities in `domain.yml` in `foo.yml`:
+The workaround is to repeat the list of entities in `general.yml` in `foo.yml`:
 
 ```bash
 make check-workaround
