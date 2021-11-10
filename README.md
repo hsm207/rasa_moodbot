@@ -6,4 +6,5 @@ Note that the bot's policy uses `MemoizationPolicy` only.
 # Usage
 
 Run `make test` to run end-to-end test.
+
 Run `make shell` to talk to the bot in the shell.
