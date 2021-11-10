@@ -1,4 +1,4 @@
-FROM rasa/rasa:2.8.1-full
+FROM rasa/rasa:2.8.12-full
 
 USER root
 RUN apt update && \
