@@ -19,8 +19,27 @@ intents:
     use_entities: true
 - bot_challenge:
     use_entities: true
-entities: []
-slots: {}
+- inform:
+    use_entities: true
+entities:
+- cuisine
+- number
+slots:
+  cuisine:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  num_people:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  requested_slot:
+    type: rasa.shared.core.slots.UnfeaturizedSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
 responses:
   utter_greet:
   - text: Hey! How are you?
@@ -35,6 +54,18 @@ responses:
   - text: Bye
   utter_iamabot:
   - text: I am a bot, powered by Rasa.
+  utter_ask_cuisine:
+  - text: What do you want to eat?
+  utter_ask_num_people:
+  - text: How many people are eating?
 actions: []
-forms: {}
+forms:
+  restaurant_form:
+    required_slots:
+      cuisine:
+      - entity: cuisine
+        type: from_entity
+      num_people:
+      - entity: number
+        type: from_entity
 e2e_actions: []

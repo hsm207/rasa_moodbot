@@ -17,7 +17,6 @@ nlu:
     - good afternoon
 - intent: goodbye
   examples: |
-    - good afternoon
     - cu
     - good by
     - cee you later
@@ -85,3 +84,11 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+- intent: inform
+  examples: |
+    - I want to eat [western](cuisine)
+    - I want [asian](cuisine)
+    - [2](number) people
+    - only [2](number) people
+    - [western](cuisine)
+    - [2](number)
