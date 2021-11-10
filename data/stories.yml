@@ -28,3 +28,17 @@ stories:
   - action: utter_did_that_help
   - intent: deny
   - action: utter_goodbye
+
+- story: inform with city
+  steps:
+  - intent: inform
+    entities:
+      - city
+  - action: utter_greet
+
+- story: inform no city
+  steps:
+  - intent: inform
+    entities:
+      - country
+  - action: bot_challenge

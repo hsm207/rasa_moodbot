@@ -1,13 +1,19 @@
 version: "2.0"
 
 intents:
-  - greet
-  - goodbye
+  - greet:
+      use_entities: [country]
+  - goodbye:
+      use_entities: []
   - affirm
   - deny
   - mood_great
   - mood_unhappy
   - bot_challenge
+
+entities:
+  - city
+  - country
 
 responses:
   utter_greet:
