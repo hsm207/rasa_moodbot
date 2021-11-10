@@ -1,0 +1,10 @@
+# health check
+GET  http://localhost:5005/
+
+###
+# version check
+GET  http://localhost:5005/version
+
+###
+# rasa server status
+GET  http://localhost:5005/status
