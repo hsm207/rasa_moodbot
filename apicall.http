@@ -1,0 +1,12 @@
+# this will throw an error
+POST http://34.122.132.168/socket.io/?EIO=4 HTTP/1.1
+content-type: application/json
+
+{
+    "session_id": "foo",
+    "message": "I am sad"
+}
+
+###
+# how to curl a socketio
+GET  http://34.122.132.168/socket.io/?EIO=4 HTTP/1.1
