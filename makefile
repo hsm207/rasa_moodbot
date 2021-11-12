@@ -9,3 +9,6 @@ test: train
 
 shell: train
 	rasa shell -vv
+
+run-action-server:
+	rasa run actions -vv --auto-reload
