@@ -24,6 +24,8 @@ intents:
 entities:
 - cuisine
 - number
+- PERSON
+- GPE
 slots:
   cuisine:
     type: rasa.shared.core.slots.TextSlot
@@ -37,6 +39,26 @@ slots:
     influence_conversation: true
   requested_slot:
     type: rasa.shared.core.slots.UnfeaturizedSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  GPE:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  PERSON:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  book_date:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  book_time:
+    type: rasa.shared.core.slots.TextSlot
     initial_value: null
     auto_fill: true
     influence_conversation: false
@@ -58,7 +80,8 @@ responses:
   - text: What do you want to eat?
   utter_ask_num_people:
   - text: How many people are eating?
-actions: []
+actions:
+  - action_make_booking
 forms:
   restaurant_form:
     required_slots:

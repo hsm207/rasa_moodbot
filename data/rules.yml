@@ -12,3 +12,10 @@ rules:
   steps:
   - intent: greet
   - action: utter_greet
+- rule: end booking sequence
+  steps:
+  - action: action_make_booking
+  - slot_was_set:
+    - book_date
+  - action: utter_happy
+  - action: utter_goodbye

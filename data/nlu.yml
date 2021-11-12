@@ -15,6 +15,7 @@ nlu:
     - goodmorning
     - goodevening
     - good afternoon
+    - hi, I am John from Germany
 - intent: goodbye
   examples: |
     - cu
