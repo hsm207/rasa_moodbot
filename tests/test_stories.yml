@@ -34,4 +34,8 @@ stories:
   - slot_was_set:
     - requested_slot: null
   - active_loop: null
+  - action: action_make_booking
+  - slot_was_set:
+    - book_date
   - action: utter_happy
+  - action: utter_goodbye

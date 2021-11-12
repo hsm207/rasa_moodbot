@@ -4,7 +4,12 @@ stories:
 
 - story: say hi, then book
   steps:
-  - intent: greet
+  - or:
+    - intent: greet
+    - intent: greet
+      entities:
+        - PERSON
+        - GPE
   - action: utter_greet
   - intent: mood_great
   - action: restaurant_form
@@ -22,4 +27,4 @@ stories:
   - slot_was_set:
     - requested_slot: null
   - active_loop: null
-  - action: utter_happy
+  - action: action_make_booking
