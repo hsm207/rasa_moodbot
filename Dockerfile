@@ -9,3 +9,5 @@ RUN apt update && \
 RUN pip install rasa-x \
     --extra-index-url https://pypi.rasa.com/simple \
     --use-deprecated=legacy-resolver
+
+RUN pip install black
