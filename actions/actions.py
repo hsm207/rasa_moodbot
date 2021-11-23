@@ -7,10 +7,11 @@
 
 # This is a simple example for a custom action which utters "Hello World!"
 
-# from typing import Any, Text, Dict, List
-#
-# from rasa_sdk import Action, Tracker
-# from rasa_sdk.executor import CollectingDispatcher
+from typing import Any, Text, Dict, List
+
+from rasa_sdk import Action, Tracker
+from rasa_sdk.executor import CollectingDispatcher
+from rasa_sdk.events import FollowupAction, SlotSet, UserUtteranceReverted
 #
 #
 # class ActionHelloWorld(Action):
@@ -25,3 +26,35 @@
 #         dispatcher.utter_message(text="Hello World!")
 #
 #         return []
+
+class ActionTest(Action):
+    """Test action."""
+
+    def name(self) -> str:
+        return "action_test"
+
+    async def run(self, dispatcher, tracker, domain):
+        dispatcher.utter_message(text="called action_test")
+        return [SlotSet("home_city", "Berlin")]
+
+class ActionDefaultFallback(Action):
+    """Executes the fallback action and goes back to the previous state
+    of the dialogue"""
+
+    def name(self):
+        return "action_default_fallback"
+
+    async def run(
+        self,
+        dispatcher,
+        tracker,
+        domain,
+    ):
+        dispatcher.utter_message("called action_default_fallback")
+        return [
+            # SlotSet("age", "100"),
+            # FollowupAction("action_test"),
+            # UserUtteranceReverted(), 
+            FollowupAction("action_test")
+            
+        ]
