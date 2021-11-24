@@ -23,3 +23,11 @@ rules:
   steps:
   - intent: chitchat
   - action: utter_chitchat
+- rule: User wants to chit chat while keying in restaurant information
+  condition:
+  - active_loop: restaurant_form
+  steps:
+  - intent: chitchat
+  - action: utter_chitchat
+  - action: restaurant_form
+  - active_loop: restaurant_form
