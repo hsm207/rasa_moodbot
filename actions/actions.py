@@ -33,3 +33,18 @@ class ActionMakeBooking(Action):
         dispatcher.utter_message(f"Made a booking on {current_date} at {current_time}")
 
         return [SlotSet("book_date", current_date), SlotSet("book_time", current_time)]
+
+class ActionRepeat(Action):
+    def name(self) -> Text:
+        return "action_repeat"
+
+    def run(
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any],
+    ) -> List[Dict[Text, Any]]:
+
+        dispatcher.utter_message(f"Repeat previous utterance")
+
+        return []

@@ -91,6 +91,7 @@ responses:
   - text: I am not sure of the whole week but I can see the sun is out today.
 actions:
   - action_make_booking
+  - action_repeat
 forms:
   restaurant_form:
     required_slots:

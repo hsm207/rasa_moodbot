@@ -28,6 +28,7 @@ rules:
   - active_loop: restaurant_form
   steps:
   - intent: chitchat
+  - action: action_repeat
   - action: utter_chitchat
   - action: restaurant_form
   - active_loop: restaurant_form
