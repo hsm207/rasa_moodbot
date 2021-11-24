@@ -8,5 +8,7 @@ Note that the bot's policy uses `MemoizationPolicy` and `RulePolicy` only.
 # Usage
 
 Run `make test` to run end-to-end test.
+
 Run `make run-action-server` to start the action server.
+
 Run `make shell` to talk to the bot in the shell.
