@@ -64,6 +64,7 @@ stories:
   - user: |
       How's the weather?
     intent: chitchat
+  - action: action_repeat
   - action: utter_chitchat
   - action: restaurant_form
   - slot_was_set:
