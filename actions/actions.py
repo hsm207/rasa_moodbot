@@ -8,6 +8,7 @@
 # This is a simple example for a custom action which utters "Hello World!"
 
 from typing import Any, Text, Dict, List
+import logging
 
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
@@ -51,10 +52,12 @@ class ActionDefaultFallback(Action):
         domain,
     ):
         dispatcher.utter_message("called action_default_fallback")
+
+        results = await ActionTest().run(dispatcher, tracker, domain)
+
         return [
-            # SlotSet("age", "100"),
-            # FollowupAction("action_test"),
-            # UserUtteranceReverted(), 
-            FollowupAction("action_test")
-            
+            SlotSet("age", "100"), # this will not be set because of UserUtteranceReverted()
+            FollowupAction("action_test"), # won't be executed because of UserUtteranceReverted()
+            UserUtteranceReverted(),
+            results[0], # this will be set because it is after UserUtteranceReverted()
         ]

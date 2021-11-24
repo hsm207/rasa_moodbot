@@ -8,7 +8,7 @@ rules:
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
-- rule: Untitled Rule
+- rule: Trigger a fallback
   steps:
   - intent: trigger_fallback
   - action: action_default_fallback
