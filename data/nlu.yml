@@ -93,3 +93,15 @@ nlu:
     - only [2](number) people
     - [western](cuisine)
     - [2](number)
+- intent: chitchat/ask_name
+  examples: |
+    - What is your name?
+    - May I know your name?
+    - What do people call you?
+    - Do you have a name for yourself?
+- intent: chitchat/ask_weather
+  examples: |
+    - What's the weather like today?
+    - Does it look sunny outside today?
+    - Oh, do you mind checking the weather for me please?
+    - I like sunny days in Berlin.

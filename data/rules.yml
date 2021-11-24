@@ -19,3 +19,7 @@ rules:
     - book_date
   - action: utter_happy
   - action: utter_goodbye
+- rule: respond to chitchat
+  steps:
+  - intent: chitchat
+  - action: utter_chitchat
