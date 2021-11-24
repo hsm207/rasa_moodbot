@@ -39,3 +39,40 @@ stories:
     - book_date
   - action: utter_happy
   - action: utter_goodbye
+
+- story: say hi then book a western cuisine, ask about the weather then  book for 2 people
+  steps:
+  - user: |
+      hi
+    intent: greet
+  - action: utter_greet
+  - user: |
+      great
+    intent: mood_great
+  - action: restaurant_form
+  - active_loop: restaurant_form
+  - slot_was_set:
+    - requested_slot: cuisine
+  - intent: inform
+    user: |-
+      [western](cuisine)
+  - slot_was_set:
+    - cuisine: western
+  - action: restaurant_form
+  - slot_was_set:
+    - requested_slot: num_people
+  - user: |
+      How's the weather?
+    intent: chitchat
+  - action: utter_chitchat
+  - action: restaurant_form
+  - slot_was_set:
+    - requested_slot: num_people
+  - intent: inform
+    user: |-
+      [2](number)
+  - action: restaurant_form
+  - slot_was_set:
+    - num_people: '2'
+    - requested_slot: null    
+  - active_loop: null
