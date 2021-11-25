@@ -33,6 +33,7 @@ responses:
 actions:
   - action_default_fallback
   - action_test
+  - action_hello_world
 
 slots:
   home_city:
