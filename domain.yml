@@ -13,6 +13,12 @@ responses:
   utter_greet:
   - text: "Hey! How are you?"
 
+  utter_greet_A:
+  - text: "Welcome to Partner A bot!"
+
+  utter_greet_B:
+  - text: "Welcome to Partner B bot!"
+
   utter_cheer_up:
   - text: "Here is something to cheer you up:"
     image: "https://i.imgur.com/nGF1K8f.jpg"
@@ -28,6 +34,16 @@ responses:
 
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
+
+actions:
+  - action_session_start
+
+slots:
+  partner:
+    type: categorical
+    values:
+      - A
+      - B
 
 session_config:
   session_expiration_time: 60

@@ -1,6 +1,19 @@
 version: "2.0"
 
 stories:
+- story: User talks to partner A
+  steps:
+  - slot_was_set:
+    - partner: A
+  - intent: greet
+  - action: utter_greet_A
+
+- story: User talks to partner B
+  steps:
+  - slot_was_set:
+    - partner: B
+  - intent: greet
+  - action: utter_greet_B
 
 - story: happy path
   steps:

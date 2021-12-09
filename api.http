@@ -1,0 +1,28 @@
+# health check
+GET  http://localhost:5005/
+
+###
+## talking to the bot using the rest channel
+POST http://localhost:5005/webhooks/rest/webhook
+content-type: application/json
+
+{
+    "sender": "test_user1",
+    "message": "hi",
+    "metadata": {
+        "partner": "A"
+    }
+}
+
+###
+## talking to the bot using the custom rest channel
+POST http://localhost:5005/webhooks/custom_rest/webhook
+content-type: application/json
+
+{
+    "sender": "test_user2",
+    "message": "hi",
+    "metadata": {
+        "partner": "A"
+    }
+}
