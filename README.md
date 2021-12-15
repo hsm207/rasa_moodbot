@@ -2,6 +2,10 @@
 
 This repository shows how to initialize a slot at the start of a conversation by passing metadata from a front end.
 
+# Usage
+
+1. Run `make build` and `make run-action-server`
+2. Make requests to the rest and custom rest connectors
 
 # References
 
