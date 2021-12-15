@@ -1,6 +1,6 @@
 # Introduction
 
-This repo demonstrates how to use a knowledge graph to disambiguate user input.
+This repo demonstrates how to use a knowledge graph to disambiguate user input using rasa 2.8.16.
 
 # Usage
 
