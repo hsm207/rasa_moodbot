@@ -49,6 +49,7 @@ nlu:
     - don't like that
     - no way
     - not really
+    - i like [chinese](cuisine) food
 
 - intent: mood_great
   examples: |
@@ -66,6 +67,7 @@ nlu:
     - so so perfect
     - so good
     - so perfect
+    - [chinese] cuisine is tasty
 
 - intent: mood_unhappy
   examples: |
@@ -83,6 +85,7 @@ nlu:
     - extremly sad
     - so saad
     - so sad
+    - [chinese] food is the best
 
 - intent: bot_challenge
   examples: |
