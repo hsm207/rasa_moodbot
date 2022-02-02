@@ -19,7 +19,6 @@ nlu:
 
 - intent: goodbye
   examples: |
-    - good afternoon
     - cu
     - good by
     - cee you later
@@ -67,7 +66,7 @@ nlu:
     - so so perfect
     - so good
     - so perfect
-    - [chinese] cuisine is tasty
+     - [chinese] cuisine is tasty
 
 - intent: mood_unhappy
   examples: |
