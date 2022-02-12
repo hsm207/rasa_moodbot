@@ -10,6 +10,23 @@ content-type: application/json
 }
 ###
 
+# activate enterprise mode
+# see https://rasa.com/docs/rasa-x/enterprise/activation
+# using curl:
+# curl --request POST \
+#      --url http://foo.rasactl.localhost/api/license \
+#      --header 'Authorization: Bearer AUTHORIZATION_TOKEN \
+#      --header 'Content-Type: application/json' \
+#      --data '{"license": "LICENSE_STRING"}'
+POST http://XXX.XXX.XXX.XXX/api/license
+Authorization: Bearer AUTHORIZATION_TOKEN
+Content-Type: application/json
+
+{
+    "license": "LICENSE_STRING"
+
+}
+
 # dump a conversation given a CONVERSATION_ID
 # see: https://rasa.com/docs/rasa-x/pages/http-api#operation/getConversationInFormat
 GET http://XXX.XXX.XXX.XXX/api/conversations/CONVERSATION_ID 
