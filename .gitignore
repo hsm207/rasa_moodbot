@@ -3,3 +3,9 @@ __pycache__
 .rasa
 .DS_Store
 results
+.vscode-server
+.cache
+.keras
+.config
+.python_history
+.bash_history
