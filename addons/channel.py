@@ -13,11 +13,14 @@ from rasa.core.channels.channel import (
     UserMessage,
     OutputChannel,
     InputChannel,
-)
+)                   
 
 from rasa.core.channels.rest import QueueOutputChannel
 
 from sanic.response import HTTPResponse
+from rasa.core.tracker_store import RedisTrackerStore
+from rasa.shared.core.trackers import EventVerbosity
+import logging
 
 try:
     from urlparse import urljoin  # pytype: disable=import-error
@@ -39,6 +42,7 @@ class CollectingOutputChannel(OutputChannel):
 
     def __init__(self) -> None:
         self.messages = []
+        self.tracker_store = RedisTrackerStore(domain=None, host="redis")
 
     @classmethod
     def name(cls) -> Text:
@@ -51,6 +55,17 @@ class CollectingOutputChannel(OutputChannel):
             return None
 
     async def send_response(self, recipient_id: Text, message: Dict[Text, Any]) -> None:
+        tracker = self.tracker_store.get_or_create_tracker(recipient_id)
+        latest_msg = tracker._latest_message_data()
+        latest_msg_none = self.tracker_store.get_or_create_tracker(recipient_id).current_state()['latest_message']
+        # latest_msg_afterrestart = self.tracker_store.get_or_create_tracker(recipient_id).current_state(event_verbosity=EventVerbosity.AFTER_RESTART)['latest_message']
+        # from rasa.shared.core.events import UserUttered
+        # UserUttered().apply_to(tracker)
+        tracker_state = tracker.current_state()
+
+        # logging.debug(f"tracker_state (None): {latest_msg_none}")
+        # logging.debug(f"tracker_state (EventVerbosity.AFTER_RESTART): {latest_msg_afterrestart}")
+        
         message.update({"recipient_id": recipient_id})
         await self._persist_message(message)
 

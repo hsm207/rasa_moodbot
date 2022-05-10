@@ -5,13 +5,20 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "rasa run",
+            "name": "Rasa: Debug Rasa Server",
             "type": "python",
-            "request": "launch",
-            "module": "rasa",
-            "justMyCode": false,
-            "args": ["run"]
-
+            "request": "attach",
+            "connect": {
+                "host": "localhost",
+                "port": 5678
+            },
+            "pathMappings": [
+                {
+                    "localRoot": "${workspaceFolder}",
+                    "remoteRoot": "."
+                }
+            ],
+            "justMyCode": false
         }
     ]
 }

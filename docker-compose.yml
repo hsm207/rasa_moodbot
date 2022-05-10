@@ -1,0 +1,19 @@
+version: '3.4'
+
+services:
+  rasa-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports: 
+      - 5005:5005
+      - 5678:5678
+    volumes:
+      - .:/app
+    entrypoint: ["sh", "-c", "make run"]
+    tty: true
+    depends_on:
+      - redis
+  redis:
+    image: redis
+
