@@ -16,3 +16,4 @@ requirements.txt
 .gitconfig
 .ssh
 .rasa
+.vscode
