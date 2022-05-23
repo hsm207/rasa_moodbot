@@ -19,7 +19,6 @@ nlu:
 
 - intent: goodbye
   examples: |
-    - good afternoon
     - cu
     - good by
     - cee you later
@@ -52,37 +51,37 @@ nlu:
 
 - intent: mood_great
   examples: |
-    - perfect
-    - great
-    - amazing
+    - [perfect](mood)
+    - [great](mood)
+    - [amazing](mood)
     - feeling like a king
     - wonderful
     - I am feeling very good
-    - I am great
-    - I am amazing
+    - I am [great](mood)
+    - I am [amazing](mood)
     - I am going to save the world
     - super stoked
-    - extremely good
-    - so so perfect
-    - so good
-    - so perfect
+    - extremely [good](mood)
+    - so so [perfect](mood)
+    - so [good](mood)
+    - so [perfect](mood)
 
 - intent: mood_unhappy
   examples: |
-    - my day was horrible
-    - I am sad
+    - my day was [horrible](mood)
+    - I am [sad](mood)
     - I don't feel very well
-    - I am disappointed
-    - super sad
-    - I'm so sad
-    - sad
-    - very sad
-    - unhappy
+    - I am [disappointed](mood)
+    - super [sad](mood)
+    - I'm so [sad](mood)
+    - [sad](mood)
+    - very [sad](mood)
+    - [unhappy](mood)
     - not good
     - not very good
-    - extremly sad
+    - extremly [sad](mood)
     - so saad
-    - so sad
+    - so [sad](mood)
 
 - intent: bot_challenge
   examples: |
